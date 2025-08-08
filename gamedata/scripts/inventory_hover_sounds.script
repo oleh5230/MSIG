@@ -1,0 +1,9 @@
+function item_focus_receive_sound()
+    sound = sound_object("interface\\inv_hover")
+    sound:play(db.actor, 0, sound_object.s2d)
+    sound.volume = 0.5
+end
+
+function on_game_start()
+    --RegisterScriptCallback("ActorMenu_on_item_focus_receive", item_focus_receive_sound)
+end

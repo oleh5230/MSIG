@@ -3,5 +3,6 @@
 !.gitignore
 
 *.bak
+*.bkp
 *.exe
 *.ini
