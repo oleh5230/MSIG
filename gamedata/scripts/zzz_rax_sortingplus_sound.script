@@ -1,1 +1,15 @@
-zzz_rax_sortingplus_mcm.snd_open = sound_object([[interface\inv_open_loot]])
+zzz_rax_sortingplus_mcm.snd_open = sound_object([[$no_sound]])
+
+sounds = {
+    sound_object([[interface\inv_open_loot_1]]),
+    sound_object([[interface\inv_open_loot_2]]),
+    sound_object([[interface\inv_open_loot_3]]),
+    sound_object([[interface\inv_open_loot_4]]),
+}
+
+LMode_Init = ui_inventory.UIInventory.LMode_Init
+ui_inventory.UIInventory.LMode_Init = function(self, obj)
+    local snd_open = sounds[math.random(#sounds)]
+    self:PlaySND(snd_open)
+    LMode_Init(self, obj)
+end

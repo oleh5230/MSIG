@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
 	<string id="ui_mcm_menu_oleh_sounds">
-		<text>Sounds</text>
+		<text>Oleh's Sounds</text>
 	</string>
 	<string id="ui_mcm_menu_movement">
 		<text>Movement</text>
@@ -22,6 +22,9 @@
 		<text>Inventory Sounds</text>
 	</string>
 
+	<string id="ui_mcm_oleh_sounds_movement_player_disc">
+		<text>Settings below apply to player sounds only</text>
+	</string>
 	<string id="ui_mcm_oleh_sounds_movement_enabled_footstep_sounds">
 		<text>Enable Footstep Sounds</text>
 	</string>
@@ -31,14 +34,17 @@
 	<string id="ui_mcm_oleh_sounds_movement_enabled_gear_rustle_sounds">
 		<text>Enable Gear Rustle Sounds</text>
 	</string>
+	<string id="ui_mcm_oleh_sounds_movement_enabled_gear_rustle_sounds_desc">
+		<text>Gear Rustle volume scales with carry weight</text>
+	</string>
 	<string id="ui_mcm_oleh_sounds_movement_volume_gear_rustle_sounds">
 		<text>Gear Rustle Sounds Volume</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_movement_enabled_servo_sounds">
-		<text>Enable Exo Servos Sounds</text>
+		<text>Enable Exo Sounds</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_movement_volume_servo_sounds">
-		<text>Exo Servos Sounds Volume</text>
+		<text>Exo Sounds Volume</text>
 	</string>
 
 	<string id="ui_mcm_oleh_sounds_movement_enabled_stance_sounds">
@@ -87,7 +93,7 @@
 		<text>Sound effects when picking up, dropping, repairing and moving items between inventories/slots.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_inventory_volume_inventory_pickup">
-		<text>Item Inventory Volume</text>
+		<text>Item Inventory Sounds Volume</text>
 	</string>
 
 	<string id="ui_mcm_oleh_sounds_inventory_enabled_inventory_hover">
@@ -97,7 +103,7 @@
 		<text>Sound effects when hovering mouse cursor over item icons.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_inventory_volume_inventory_hover">
-		<text>Cursor Hover Volume</text>
+		<text>Cursor Hover Sounds Volume</text>
 	</string>
 
 
@@ -173,7 +179,17 @@
 	<string id="ui_mcm_oleh_sounds_weapons_enabled_reload_hint">
 		<text>Enable Low Ammo Sounds</text>
 	</string>
+	<string id="ui_mcm_oleh_sounds_weapons_enabled_reload_hint_desc">
+		<text>Extra shooting sound effects when ammo in the magazine is about to be depleted</text>
+	</string>
 	<string id="ui_mcm_oleh_sounds_weapons_volume_reload_hint">
 		<text>Low Ammo Sounds Volume</text>
+	</string>
+
+	<string id="ui_mcm_oleh_sounds_weapons_enabled_scope_zoom">
+		<text>Enable Scope Zoom Adjustment Sounds</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_weapons_volume_scope_zoom">
+		<text>Scope Zoom Adjustment Sounds Volume</text>
 	</string>
 </string_table>

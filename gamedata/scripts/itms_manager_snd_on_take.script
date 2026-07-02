@@ -1,6 +1,7 @@
 -- oleh5230, 18.11.25
--- Last edit: 09.12.25
+-- Last edit: 03.05.26
 debug = false
+gamma_ver = true
 
 local timeout_tg = 0
 local timeout_duration = 1
@@ -57,11 +58,12 @@ snd_on_take = {
 	["fabric"]				= {"interface\\items\\inv_items_fabric_",1,2},
 	["powder"]				= {"interface\\items\\inv_items_generic_",1,2},
 
-	["junk"]				= {"interface\\items\\inv_items_junk_1"},
+	["junk"]				= {"interface\\items\\inv_items_misc_1"},
 	["jar"]  				= {"interface\\items\\inv_items_jar_1"},
 	["cont"]				= {"interface\\items\\inv_items_cont_1"},
 	["matchbox"]			= {"interface\\items\\inv_items_matchbox_1"},
 	["shovel"]  			= {"interface\\items\\inv_items_shovel_1"},
+	["guitar"]				= {"interface\\items\\inv_items_guitar_1"},
 	["jerrycan"]  			= {"interface\\items\\inv_items_jerrycan_1"},
 	["jerrycanpoly"]		= {"interface\\items\\inv_items_jerrycanpoly_1"},
 	["device"]  			= {"interface\\items\\inv_items_device_1"},
@@ -81,12 +83,31 @@ snd_on_take = {
 	["w_pistol"]			= {"interface\\items\\inv_items_wpnhg_",1,2},
 	["w_smg"]				= {"interface\\items\\inv_items_wpn_",1,2},
 	["w_rifle"]				= {"interface\\items\\inv_items_wpnbig_",1,2},
-	["w_sniper"]			= {"interface\\items\\inv_items_wpnbig_",1,2},
-	["w_shotgun"]			= {"interface\\items\\inv_items_wpnbig_",1,2},
-	["w_explosive"]			= {"interface\\items\\inv_items_wpnbig_",1,2},
+	["w_sniper"]			= {"interface\\items\\inv_items_wpnsg_",1,2},
+	["w_shotgun"]			= {"interface\\items\\inv_items_wpnsg_",1,2},
+	["w_explosive"]			= {"interface\\items\\inv_items_wpnsg_",1,2},
+	["w_mg"]				= {"interface\\items\\inv_items_wpnmg_",1,2},
 
-	["woodfurniture"]  		= {"interface\\items\\inv_items_woodfurniture_",1,2},
-	["metalfurniture"]  	= {"interface\\items\\inv_items_metalfurniture_",1,2},
+	["woodfurniture"]  		= {"furniture\\place_wall_wood"},
+	["metalfurniture"]  	= {"furniture\\place_small"},
+
+	["metal_small"]			= {"furniture\\place_metal_small"},
+	["metal_medium"]		= {"furniture\\place_wall_metal"},
+	["metal_large"]			= {"furniture\\place_wall_metal"},
+	["wall_metal"]			= {"furniture\\place_wall_metal"},
+	["cont_metal"]			= {"furniture\\place_wall_metal"},
+
+	["wood_small"]			= {"furniture\\place_wood_small"},
+	["wood_medium"]			= {"furniture\\place_wall_wood"},
+	["wood_large"]			= {"furniture\\place_wall_wood"},
+	["wall_wood"]			= {"furniture\\place_wall_wood"},
+	["cont_wood"]			= {"furniture\\place_wall_wood"},
+
+	["furniture"]			= {"furniture\\place_generic"},
+	["workbench"]			= {"furniture\\place_workbench"},
+	["fridge"]				= {"furniture\\place_fridge"},
+	["rug"]					= {"furniture\\place_cloth"},
+	["poster"]				= {"furniture\\place_poster"},
 }
 
 snd_on_use = {
@@ -108,8 +129,9 @@ snd_on_use = {
 
 local enabled = true
 local base_vol = 1
-
 local time_snd_prev = 0
+local ini_cas = ini_file_ex("plugins\\grok_casings_sounds_weapons.ltx")
+
 play_item_sound = itms_manager.play_item_sound
 function itms_manager.play_item_sound(item, vol)
 	if not enabled then return end
@@ -118,7 +140,7 @@ function itms_manager.play_item_sound(item, vol)
 		return
 	end
 
-	local snd_type = SYS_GetParam(0,item:section(),"snd_on_take")
+	local snd_type = SYS_GetParam(0, item:section(), "snd_on_take")
 	if not (snd_type and snd_type ~= "") then
 		return
 	end
@@ -126,7 +148,29 @@ function itms_manager.play_item_sound(item, vol)
 	local snd = snd_on_take[snd_type]
 	-- oleh5230
 	if snd_type == "weapon" then
-		snd = snd_on_take[SYS_GetParam(0,item:section(),"kind") or "w_rifle"]
+		local sec = item:section()
+		local kind = SYS_GetParam(0, sec, "kind")
+		snd = snd_on_take[kind] or snd_on_take["w_rifle"]
+
+	    -- special case for self loading snipers
+        -- reads GAMMA casings sounds .ltx to check if weapon has delayed ejection (manual action)
+		if kind == "w_sniper" and not ini_cas:r_float_ex(sec, "eject_delay") then
+			snd = snd_on_take["w_rifle"]
+        end
+
+		-- special case for magazine-fed machine guns
+		if kind == "w_shotgun" and
+        not ini_cas:r_float_ex(sec, "eject_delay") and
+        SYS_GetParam(0, sec, "tri_state_reload", "off") ~= "on" and
+        SYS_GetParam(0, sec, "class", "WP_ASHTG") ~= "WP_BM16" then
+            snd = snd_on_take["w_rifle"]
+        end
+
+		-- special case for belt-fed machine guns
+        local upgr_tree = SYS_GetParam(0, sec, "upgrades")
+        if upgr_tree and (string.find(upgr_tree,"_pkm") or string.find(upgr_tree,"_m249")) then
+            snd = snd_on_take["w_mg"]
+        end
 	end
 	-- oleh5230 end
 	if (not snd) then
@@ -150,44 +194,16 @@ function itms_manager.play_item_sound(item, vol)
 	time_snd_prev = time_g
 end
 
-local time_snd_prev2 = 0
-function itms_manager.play_use_sound(item, vol)
-	if (not item) then
-		printe("!ERROR itms_manager_snd_on_take | play_use_sound | no object recieved!")
-		return
-	end
-
-	local snd_type = SYS_GetParam(0,item:section(),"snd_on_use")
-	if not (snd_type and snd_type ~= "") then
-		return
-	end
-
-	local snd = snd_on_use[snd_type]
-	if (not snd) then
-		return
-	end
-
-	local snd_obj
-	if (#snd == 1) then
-		snd_obj = sound_object(snd[1])
-	else
-		snd_obj = sound_object(snd[1] .. tostring(math.random(snd[2],snd[3])))
-	end
-
-	local time_g = time_global()
-	if snd_obj and (time_g > time_snd_prev2 + 200) then
-		snd_obj:play(db.actor,0,sound_object.s2d)
-		snd_obj.volume = vol and base_vol * vol or base_vol
-	end
-	time_snd_prev2 = time_g
-end
-
 -- fix for items spawned after opening a container
 function GUI_on_show(name)
 	if name == "UIInventory" and ui_inventory.GUI and ui_inventory.GUI.mode == "loot" then
 		-- increased duration for demonized exes' ammo aggregation
 		itms_manager.print_dbg("UIInventory timeout")
 		itms_manager.timeout_snd_on_take(250)
+
+	-- elseif name == "UIMutantLoot" and ui_mcm and ui_mcm.get("fddar/skinning/auto_loot_all") then
+	-- 	itms_manager.print_dbg("UIMutantLoot timeout")
+	-- 	itms_manager.timeout_snd_on_take(50)
 	end
 end
 
@@ -195,13 +211,13 @@ function GUI_on_hide(name)
 	-- fix for ammo spawned by ammo wheel 
 	if name == "UIWheelAmmo" then
 		itms_manager.print_dbg("UIWheelAmmo timeout")
-		itms_manager.timeout_snd_on_take()
+		itms_manager.timeout_snd_on_take(50)
 
 	-- patch for mutant skinning (to not interfere with FDDAR)
 	elseif name == "UIMutantLoot" then
 		if ui_mcm and ui_mcm.get("fddar/skinning/enable") then
 			itms_manager.print_dbg("UIMutantLoot timeout")
-			itms_manager.timeout_snd_on_take()
+			itms_manager.timeout_snd_on_take(50)
 		end
 	end
 end
@@ -209,7 +225,7 @@ end
 -- fix for items spawned upon item use (to not interfere with FDDA)
 function actor_on_item_use()
 	itms_manager.print_dbg("actor_on_item_use timeout")
-	itms_manager.timeout_snd_on_take()
+	itms_manager.timeout_snd_on_take(50)
 end
 
 -- fix for headgear/backpack equip (to not interfere with FDDAR)
@@ -218,16 +234,16 @@ function actor_item_equip(obj)
 	if (IsHeadgear(obj) and ui_mcm and ui_mcm.get("fddar/headgear_anm/enable"))
 	or (IsItem("backpack", nil, obj) and ui_mcm and ui_mcm.get("fddar/outfit_anm/enable_backpack_equip")) then
 		itms_manager.print_dbg("actor_item_equip timeout")
-		itms_manager.timeout_snd_on_take()
+		itms_manager.timeout_snd_on_take(50)
 	end
 end
 
 function load_mcm_options()
-    if ui_mcm and oleh_sounds_mcm then
+    if ui_mcm and oleh_sounds_mcm and oleh_sounds_mcm.on_mcm_load then
         enabled = ui_mcm.get("oleh_sounds/inventory/enabled_inventory_pickup")
         base_vol = ui_mcm.get("oleh_sounds/inventory/volume_inventory_pickup") or 1
     -- old MCM compatibility
-    elseif ui_mcm and oleh_misc_sounds_mcm then
+    elseif ui_mcm and oleh_misc_sounds_mcm and oleh_misc_sounds_mcm.on_mcm_load then
         enabled = ui_mcm.get("oleh_misc_sounds/enabled_inventory_pickup")
         base_vol = ui_mcm.get("oleh_misc_sounds/volume_inventory_pickup") or 1
     end
