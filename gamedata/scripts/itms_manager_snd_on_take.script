@@ -238,15 +238,15 @@ function actor_item_equip(obj)
 	end
 end
 
-function load_mcm_options()
-    if ui_mcm and oleh_sounds_mcm and oleh_sounds_mcm.on_mcm_load then
-        enabled = ui_mcm.get("oleh_sounds/inventory/enabled_inventory_pickup")
-        base_vol = ui_mcm.get("oleh_sounds/inventory/volume_inventory_pickup") or 1
-    -- old MCM compatibility
-    elseif ui_mcm and oleh_misc_sounds_mcm and oleh_misc_sounds_mcm.on_mcm_load then
-        enabled = ui_mcm.get("oleh_misc_sounds/enabled_inventory_pickup")
-        base_vol = ui_mcm.get("oleh_misc_sounds/volume_inventory_pickup") or 1
+function load_settings()
+    if ui_mcm and ((oleh_sounds_mcm and oleh_sounds_mcm.on_mcm_load) or (oleh_misc_sounds_mcm and oleh_misc_sounds_mcm.on_mcm_load)) then
+        enabled = ui_mcm.get("oleh_sounds/inventory/enabled_inventory_pickup") or ui_mcm.get("oleh_misc_sounds/enabled_inventory_pickup")
+        base_vol = ui_mcm.get("oleh_sounds/inventory/volume_inventory_pickup") or ui_mcm.get("oleh_misc_sounds/volume_inventory_pickup") or 1
     end
+end
+
+function load_mcm_options()
+    load_settings()
 end
 
 function actor_on_update()

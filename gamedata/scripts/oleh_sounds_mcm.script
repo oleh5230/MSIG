@@ -2,6 +2,15 @@ function on_mcm_load()
     local op = {
         id = "oleh_sounds",
         gr = {
+                        {
+                id = "general",
+                sh = true,
+                gr = {
+                    {id = "title", type = "slide", link = "ui_options_slider_control", text = "ui_mcm_title_oleh_sounds_general", size = {512, 50}, spacing = 20},
+
+                    {id = "ice_patch", type = "check", val = 1, def = false},
+                }
+            },
             {
                 id = "weapons",
                 sh = true,
@@ -37,7 +46,6 @@ function on_mcm_load()
                     {id = "enabled", type = "check", val = 1, def = true},
                     {id = "ubgl_enabled", type = "check", val = 1, def = true},
                     --{id = "volume", type = "track", val = 2, min = 0, max = 2, step = 0.05, def = 2},
-                    {id = "ice_patch", type = "check", val = 1, def = false},
                 }
             },
             {

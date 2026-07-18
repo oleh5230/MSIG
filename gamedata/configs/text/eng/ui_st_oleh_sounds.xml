@@ -3,6 +3,9 @@
 	<string id="ui_mcm_menu_oleh_sounds">
 		<text>Oleh's Sounds</text>
 	</string>
+	<string id="ui_mcm_menu_general">
+		<text>General</text>
+	</string>
 	<string id="ui_mcm_menu_movement">
 		<text>Movement</text>
 	</string>
@@ -12,6 +15,9 @@
 	<string id="ui_mcm_menu_inventory">
 		<text>Inventory</text>
 	</string>
+	<string id="ui_mcm_title_oleh_sounds_general">
+		<text>General Settings</text>
+	</string>
 	<string id="ui_mcm_title_oleh_sounds_movement">
 		<text>Movement Sounds</text>
 	</string>
@@ -20,6 +26,13 @@
 	</string>
 	<string id="ui_mcm_title_oleh_sounds_inventory">
 		<text>Inventory Sounds</text>
+	</string>
+
+	<string id="ui_mcm_oleh_sounds_general_ice_patch">
+		<text>Screen Space Shaders Ice Version Patch</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_general_ice_patch_desc">
+		<text>Fixes casings sound effects on ice.</text>
 	</string>
 
 	<string id="ui_mcm_oleh_sounds_movement_player_disc">
