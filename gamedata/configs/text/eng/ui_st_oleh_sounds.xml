@@ -28,6 +28,12 @@
 		<text>Inventory Sounds</text>
 	</string>
 
+	<string id="ui_mcm_oleh_sounds_general_grass_patch">
+		<text>C-Consciousness Grass Overgrown Patch</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_general_grass_patch_desc">
+		<text>Replaces dirt movement sounds with grass ones. Can be used without C-Consciousness Grass</text>
+	</string>
 	<string id="ui_mcm_oleh_sounds_general_ice_patch">
 		<text>Screen Space Shaders Ice Version Patch</text>
 	</string>
