@@ -42,7 +42,7 @@
 	</string>
 
 	<string id="ui_mcm_oleh_sounds_movement_player_disc">
-		<text>Settings below apply to player sounds only</text>
+		<text>Settings below apply to player sounds only/nFootstep volume slider does not apply to water</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_movement_enabled_footstep_sounds">
 		<text>Enable Footstep Sounds</text>
