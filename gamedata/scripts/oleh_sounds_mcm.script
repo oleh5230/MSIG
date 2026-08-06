@@ -89,7 +89,7 @@ function on_mcm_load()
                     {id = "volume_inventory_pickup", type = "track", val = 2, min = 0, max = 2, step = 0.05, def = 1},
 
                     {id = "divider", type = "line"},
-                    {id = "enabled_inventory_hover", type = "check", val = 1, def = true},
+                    {id = "enabled_inventory_hover", type = "check", val = 1, def = false},
                     {id = "volume_inventory_hover", type = "track", val = 2, min = 0, max = 2, step = 0.05, def = 1},
                 }
             },
