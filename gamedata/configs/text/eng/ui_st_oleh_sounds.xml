@@ -59,8 +59,15 @@
 	<string id="ui_mcm_oleh_sounds_movement_volume_gear_rustle_sounds">
 		<text>Gear Rustle Sounds Volume</text>
 	</string>
+
 	<string id="ui_mcm_oleh_sounds_movement_enabled_servo_sounds">
 		<text>Enable Exo Sounds</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_movement_legacy_servo_sounds">
+		<text>Legacy Exo Sounds</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_movement_legacy_servo_sounds_desc">
+		<text>Use exo servo sounds from the original addon</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_movement_volume_servo_sounds">
 		<text>Exo Sounds Volume</text>
