@@ -3,8 +3,11 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 
 ## Installation
 *MSIG is included in GAMMA by default (2026.05.08 version), but GAMMA launcher pulls updates only on GAMMA update releases*
+
 **Load order (priority) does not matter**
+
 **Disabling default GAMMA sound addons is not required**
+
 1. Download the latest release archive *(do not extract it)*: <https://github.com/oleh5230/MSIG/releases>
 2. In Mod Organizer, go to `File` > `Install Mod...` (or press `Ctrl` + `M`)
 3. Select the downloaded archive
