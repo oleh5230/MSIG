@@ -19,3 +19,12 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 - Furniture sounds
 - Vehicle sounds
 - Various fixes
+
+## Recommended addons
+Only sound addons I use personally (excluding default GAMMA addons)
+[Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
+[S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
+[Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
+[Oleh's Weapon Sounds](https://github.com/oleh5230/WSTFG)
+[MovementSFX](https://github.com/oleh5230/MovementSFX)
+[Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
