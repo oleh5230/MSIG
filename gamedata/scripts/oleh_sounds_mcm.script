@@ -1,8 +1,13 @@
+-- removes legacy mcm menus for two addons
+if extended_movement_sounds_mcm and grok_casings_sounds_mcm.VERSION and grok_casings_sounds_mcm.VERSION >= 5 then grok_casings_sounds_mcm.on_mcm_load =  function() end end
+if extended_movement_sounds_mcm and extended_movement_sounds_mcm.VERSION and extended_movement_sounds_mcm.VERSION >= 5 then extended_movement_sounds_mcm.on_mcm_load = function() end end
+
+-- common mcm menu for all three addons
 function on_mcm_load()
     local op = {
         id = "oleh_sounds",
         gr = {
-                        {
+            {
                 id = "general",
                 sh = true,
                 gr = {
