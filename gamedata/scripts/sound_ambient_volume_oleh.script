@@ -1,6 +1,5 @@
 -- removes helmet rain volume clamp
 -- interpolates indoor rain volume
--- applies environment volume setting modifier
 -- oleh5230, 10.08.26
 
 -- To Do:
@@ -23,8 +22,8 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 	local sound1 = "rain_helmet"
 	local sound2 = "rain_indoors"
 
-	local volume1 = ((not inside) and (actor_effects.is_mask_on()) and rain_volume * opt.ambient_volume) or 0
-	volume2 = (inside and clamp(volume2 + step,0,opt.ambient_volume)) or clamp(volume2 - step,0,opt.ambient_volume)
+	local volume1 = ((not inside) and (actor_effects.is_mask_on()) and rain_volume) or 0
+	volume2 = (inside and clamp(volume2 + step,0,1)) or clamp(volume2 - step,0,1)
 
 	xr_sound.play_sound_looped(AC_ID, sound1)
 	xr_sound.play_sound_looped(AC_ID, sound2)
@@ -32,7 +31,7 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 	xr_sound.set_volume_sound_looped(AC_ID, sound1, volume1)
 	xr_sound.set_volume_sound_looped(AC_ID, sound2, volume2)
 
-	printf("-Dynamic rain sounds - rain_factor: %s - rain_volume: %s - volume1: %s - volume2: %s", rain_factor, rain_volume, volume1, volume2)
+	--printf("-Dynamic rain sounds - rain_factor: %s - rain_volume: %s - volume1: %s - volume2: %s", rain_factor, rain_volume, volume1, volume2)
 end
 
 local function update_settings()
