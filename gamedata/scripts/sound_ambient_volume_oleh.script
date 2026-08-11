@@ -1,10 +1,14 @@
 -- removes helmet rain volume clamp
 -- interpolates indoor rain volume
+-- sets volume to zero if rain ends abruptly (i.e debug)
 -- oleh5230, 10.08.26
 
 -- To Do:
 -- scale indoor rain volume with rain density
 
+local sound1 = "rain_helmet"
+local sound2 = "rain_indoors"
+local volume1 = 0
 local volume2 = 0
 local step = 0.01
 
@@ -17,13 +21,20 @@ local opt = {
 update_rain_helm_sound = sound_ambient.update_rain_helm_sound
 function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, bLevelUnderground)
 
-	if bLevelUnderground or (rain_factor < 0.1) or (not opt.effects_rain_enabled) then return end
+	if not bLevelUnderground and rain_factor > 0.1 and opt.effects_rain_enabled then
 
-	local sound1 = "rain_helmet"
-	local sound2 = "rain_indoors"
+		if inside then
+			volume1 = 0
+			volume2 = clamp(volume2 + step,0,1)
+		else
+			volume1 = (actor_effects.is_mask_on() and rain_volume * 2) or 0
+			volume2 = clamp(volume2 - step,0,1)
+		end
 
-	local volume1 = ((not inside) and (actor_effects.is_mask_on()) and rain_volume) or 0
-	volume2 = (inside and clamp(volume2 + step,0,1)) or clamp(volume2 - step,0,1)
+	else
+		volume1 = 0
+		volume2 = 0
+	end
 
 	xr_sound.play_sound_looped(AC_ID, sound1)
 	xr_sound.play_sound_looped(AC_ID, sound2)
@@ -44,7 +55,14 @@ local function actor_on_first_update()
 	update_settings()
 end
 
+function GUI_on_hide(name)
+	if name == "WeatherEditor" then
+		sound_ambient.update_rain_helm_sound(0, 0, false, false)
+	end
+end
+
 function on_game_start()
+	--RegisterScriptCallback("GUI_on_hide",GUI_on_hide)
 	RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
 	RegisterScriptCallback("on_option_change",update_settings)
 end
