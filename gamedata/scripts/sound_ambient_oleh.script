@@ -27,7 +27,7 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 			volume1 = 0
 			volume2 = clamp(volume2 + step,0,1)
 		else
-			volume1 = (actor_effects.is_mask_on() and rain_volume * 2) or 0
+			volume1 = (actor_effects.is_mask_on() and rain_volume) or 0
 			volume2 = clamp(volume2 - step,0,1)
 		end
 
