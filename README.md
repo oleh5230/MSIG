@@ -24,7 +24,7 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
 
 ## Features
-- User interface sounds (based on [Dark Signal UI Audio](https://www.moddb.com/addons/dark-signal-ui-sounds))
+- User interface sounds
 - Player hit sounds
 - Mutant step sounds
 - Physics collision sounds
@@ -33,3 +33,6 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - Vehicle sounds
 - Various fixes
 
+## Credits
+- Shrike: anomaly, mutant, geiger and multiple inventory, FDDAR sounds
+- Ani HVX: thunder, multiple inventory sounds
