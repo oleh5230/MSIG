@@ -33,3 +33,6 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - Vehicle sounds
 - Various fixes
 
+## Credits
+- Shrike: anomaly, mutant, geiger and multiple inventory, FDDAR sounds
+- Ani HVX: thunder, multiple inventory sounds
