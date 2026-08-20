@@ -34,5 +34,5 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - Various fixes
 
 ## Credits
-- Shrike: anomaly, mutant, geiger and multiple inventory, FDDAR sounds
+- Shrike: anomaly, mutant, geiger and multiple inventory sounds, FDDAR sounds
 - Ani HVX: thunder, multiple inventory sounds
