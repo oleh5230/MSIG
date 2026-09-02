@@ -1,5 +1,7 @@
+-- plays sounds when disassembling items/using repair items
 -- oleh5230, 18.11.25
--- Last edit: 07.05.26
+-- Last edit: 01.09.26
+
 debug = false
 
 local ini_parts = itms_manager.ini_parts
@@ -98,6 +100,13 @@ device_parts = {
 	-- "prt_i_copper",
 }
 
+cloth_parts = {
+	"prt_o_fabrics_1",
+	"prt_o_fabrics_2",
+	"prt_o_fabrics_3",
+	"prt_o_fabrics_4",
+}
+
 disassembly_item = item_parts.disassembly_item
 function item_parts.disassembly_item(obj, obj_d)
 	disassembly_item(obj, obj_d)
@@ -116,9 +125,24 @@ function item_parts.disassembly_item(obj, obj_d)
 		if is_device then
 			item_parts.play_disassembly_snd("interface\\inv_disassemble_device")
 			itms_manager.timeout_snd_on_take(50)
-		else
-			itms_manager.play_item_sound(obj)
-			itms_manager.timeout_snd_on_take(50)
+			return
 		end
+
+		local is_cloth = false
+		for i in pairs(cloth_parts) do
+			if string.find(parts,cloth_parts[i]) then
+				is_device = true
+				break
+			end
+		end
+
+		if is_cloth then
+			item_parts.play_disassembly_snd("interface\\inv_disassemble_cloth")
+			itms_manager.timeout_snd_on_take(50)
+			return
+		end
+
+		itms_manager.play_item_sound(obj)
+		itms_manager.timeout_snd_on_take(50)
 	end
 end

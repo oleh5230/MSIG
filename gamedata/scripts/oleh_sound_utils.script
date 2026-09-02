@@ -152,6 +152,7 @@ function on_game_start()
     RegisterScriptCallback("actor_item_to_slot", update_outfit)
     RegisterScriptCallback("actor_item_to_ruck", update_outfit)
     RegisterScriptCallback("actor_on_item_drop", update_outfit)
+    RegisterScriptCallback("actor_on_first_update", update_outfit)
 
     RegisterScriptCallback("actor_on_item_drop", update_weight)
     RegisterScriptCallback("actor_item_to_ruck", update_weight)

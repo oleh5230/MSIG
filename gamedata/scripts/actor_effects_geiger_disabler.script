@@ -1,0 +1,4 @@
+-- removes geiger sounds for gained rads
+-- seems redundant given HUD feedback and sounds when in a rad zone
+
+actor_effects.Update_Rad = function(actor) end
