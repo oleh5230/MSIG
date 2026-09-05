@@ -7,9 +7,16 @@ sounds = {
     sound_object([[interface\inv_open_loot_4]]),
 }
 
+local time_snd_prev = 0
 LMode_Init = ui_inventory.UIInventory.LMode_Init
 ui_inventory.UIInventory.LMode_Init = function(self, obj)
-    local snd_open = sounds[math.random(#sounds)]
-    self:PlaySND(snd_open)
+    local tg = time_global()
+    if tg > time_snd_prev + 200 then
+        local snd_open = sounds[math.random(#sounds)]
+        self:PlaySND(snd_open)
+
+        time_snd_prev = tg
+    end
+
     LMode_Init(self, obj)
 end

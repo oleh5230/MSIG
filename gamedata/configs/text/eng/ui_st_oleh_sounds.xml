@@ -138,6 +138,16 @@
 		<text>Cursor Hover Sounds Volume</text>
 	</string>
 
+	<string id="ui_mcm_oleh_sounds_inventory_enabled_inventory_unload">
+		<text>Weapon Unload Sounds</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_inventory_enabled_inventory_unload_desc">
+		<text>Designated sound effects when unloading weapons via inventory context menu.</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_inventory_volume_inventory_unload">
+		<text>Weapon Unload Sounds Volume</text>
+	</string>
+
 
 
 	<string id="ui_mcm_menu_grok_casings_sounds">

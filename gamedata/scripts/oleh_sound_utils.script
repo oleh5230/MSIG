@@ -1,4 +1,4 @@
-VERSION = 5
+VERSION = 6
 
 FreelookActive = false
 local freelook_toggle = false
@@ -75,13 +75,24 @@ function update_outfit()
     cached_item_id = item:id()
 end
 
-local cached_actor_total_weight = 0
-function get_actor_total_weight()
-    return cached_actor_total_weight
+total_weight = 0
+function update_weight()
+    total_weight = db.actor:get_total_weight()
 end
 
-function update_weight()
-    cached_actor_total_weight = db.actor:get_total_weight()
+max_weight = 60
+-- credits: demonized
+function update_actor_max_weight()
+	local maxWeight = db.actor:get_actor_max_walk_weight()
+	local outfit = db.actor:item_in_slot(7)
+	local backpack = db.actor:item_in_slot(13)
+	maxWeight = maxWeight + (outfit and outfit:get_additional_max_weight() or 0)
+	maxWeight = maxWeight + (backpack and backpack:get_additional_max_weight() or 0)
+	db.actor:iterate_belt(function(owner, obj)
+		local c_arty = obj:cast_Artefact()
+		maxWeight = maxWeight + (c_arty and c_arty:AdditionalInventoryWeight() or 0)
+	end)
+	max_weight = maxWeight
 end
 
 -- legacy methods
@@ -153,6 +164,15 @@ function on_game_start()
     RegisterScriptCallback("actor_item_to_ruck", update_outfit)
     RegisterScriptCallback("actor_on_item_drop", update_outfit)
     RegisterScriptCallback("actor_on_first_update", update_outfit)
+
+    RegisterScriptCallback("actor_item_to_slot", update_weight)
+    RegisterScriptCallback("actor_item_to_ruck", update_weight)
+    RegisterScriptCallback("actor_on_item_drop", update_weight)
+    RegisterScriptCallback("actor_on_first_update", update_weight)
+
+    RegisterScriptCallback("actor_item_to_slot", update_actor_max_weight)
+    RegisterScriptCallback("actor_item_to_belt", update_actor_max_weight)
+    RegisterScriptCallback("actor_on_first_update", update_actor_max_weight)
 
     RegisterScriptCallback("actor_on_item_drop", update_weight)
     RegisterScriptCallback("actor_item_to_ruck", update_weight)
