@@ -79,8 +79,9 @@ snd_on_take = {
 	["hide"]  				= {"interface\\items\\inv_items_hide_1"},
 	["bone"]				= {"interface\\items\\inv_items_bone_1"},
 
-	["kit"]  				= {"interface\\items\\inv_items_kit_1"},
-	["kitpoly"]  			= {"interface\\items\\inv_items_kitpoly_1"},
+	["toolkit"]  			= {"interface\\items\\inv_items_toolkit_1"},
+	["toolbox"]  			= {"interface\\items\\inv_items_toolbox_1"},
+	["kitpoly"]  			= {"interface\\items\\inv_items_kitpoly_",1,2},
     ["outfit_equ"]  		= {"interface\\items\\inv_items_outfit_",1,2},
 	["helmet_equ"]  		= {"interface\\items\\inv_items_helmet_1"},
 

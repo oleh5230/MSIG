@@ -1,6 +1,6 @@
 -- removes helmet rain volume clamp
 -- interpolates indoor rain volume
--- sets volume to zero if rain ends abruptly (i.e debug)
+-- sets volume to zero if rain ends abruptly (i.e. debug)
 -- oleh5230, 10.08.26
 
 -- To Do:

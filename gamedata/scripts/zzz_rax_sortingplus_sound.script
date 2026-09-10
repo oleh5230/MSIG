@@ -1,20 +1,48 @@
 zzz_rax_sortingplus_mcm.snd_open = sound_object([[$no_sound]])
 
 sounds = {
-    sound_object([[interface\inv_open_loot_1]]),
-    sound_object([[interface\inv_open_loot_2]]),
-    sound_object([[interface\inv_open_loot_3]]),
-    sound_object([[interface\inv_open_loot_4]]),
+    sound_object([[interface\inv_open1]]),
+    sound_object([[interface\inv_open2]]),
+    sound_object([[interface\inv_open3]]),
+    sound_object([[interface\inv_open4]]),
 }
 
+sounds_body = {
+    sound_object([[interface\inv_loot_body1]]),
+    sound_object([[interface\inv_loot_body2]]),
+    sound_object([[interface\inv_loot_body3]]),
+    sound_object([[interface\inv_loot_body4]]),
+    sound_object([[interface\inv_loot_body5]]),
+    sound_object([[interface\inv_loot_body6]]),
+}
+
+local last = 0
+local last_body = 0
 local time_snd_prev = 0
 LMode_Init = ui_inventory.UIInventory.LMode_Init
 ui_inventory.UIInventory.LMode_Init = function(self, obj)
     local tg = time_global()
-    if tg > time_snd_prev + 200 then
-        local snd_open = sounds[math.random(#sounds)]
-        self:PlaySND(snd_open)
+    if obj and tg > time_snd_prev + 200 then
+        if IsStalker(obj) then
+            local roll = math.random(#sounds_body)
+            if roll == last_body then
+                roll = last_body % #sounds_body + 1
+            end
+            last_body = roll
 
+            local snd_open = sounds_body[roll]
+            self:PlaySND(snd_open)
+
+        else
+            local roll = math.random(#sounds)
+            if roll == last then
+                roll = last % #sounds + 1
+            end
+            last = roll
+
+            local snd_open = sounds[roll]
+            self:PlaySND(snd_open)
+        end
         time_snd_prev = tg
     end
 
