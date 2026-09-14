@@ -140,7 +140,7 @@ function actor_on_before_hit(shit, bone_id, flags)
 end
 
 -- some levels use 'earth' material for grassy terrain
--- horrendous levels like Dead City are beyond repair
+-- horrendous levels like Dead City are still beyond repair
 function is_actually_grass(material)
     if material == "materials\\earth"
     -- no grass underground/indoors
