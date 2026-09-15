@@ -17,7 +17,8 @@ function on_key_hold(key)
 	end
 end
 
-function on_key_release(key)
+-- on_before because base callback is blocked by ui_inventory
+function on_before_key_release(key)
 	if key == 337 then
 		lmb = false
 	end
@@ -37,7 +38,7 @@ end
 function on_game_start()
     RegisterScriptCallback("ActorMenu_on_item_focus_receive", item_focus_receive_sound)
     RegisterScriptCallback("on_key_hold", on_key_hold)
-    RegisterScriptCallback("on_key_release", on_key_release)
+    RegisterScriptCallback("on_before_key_release", on_before_key_release)
     RegisterScriptCallback("on_option_change", load_mcm_options)
     load_mcm_options()
 end
