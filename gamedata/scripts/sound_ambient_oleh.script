@@ -6,10 +6,16 @@
 -- To Do:
 -- scale indoor rain volume with rain density
 
-local sound1 = "rain_helmet"
-local sound2 = "rain_indoors"
-local volume1 = 0
-local volume2 = 0
+local low = "rain_weak"
+local med = "rain_medium"
+local big = "rain_strong"
+local int = "rain_indoors"
+local hlm = "rain_helmet"
+local vol_low = 0
+local vol_med = 0
+local vol_big = 0
+local vol_int = 0
+local vol_hlm = 0
 local step = 0.01
 
 local clamp = clamp
@@ -21,28 +27,53 @@ local opt = {
 update_rain_helm_sound = sound_ambient.update_rain_helm_sound
 function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, bLevelUnderground)
 
-	if not bLevelUnderground and rain_factor > 0.1 and opt.effects_rain_enabled then
+	if not bLevelUnderground and rain_factor > 0 and opt.effects_rain_enabled then
 
 		if inside then
-			volume1 = 0
-			volume2 = clamp(volume2 + step,0,1)
+			vol_low = clamp(vol_low - step,0,1)
+			vol_med	= clamp(vol_med - step,0,1)
+			vol_big	= clamp(vol_big - step,0,1)
+			vol_hlm = clamp(vol_hlm - step,0,1)
+			vol_int = clamp(vol_int + step,0,1)
 		else
-			volume1 = (actor_effects.is_mask_on() and rain_volume) or 0
-			volume2 = clamp(volume2 - step,0,1)
+			if rain_factor > 0.7 then
+			vol_low = clamp(vol_low - step,0,1)
+			vol_med	= clamp(vol_med - step,0,1)
+			vol_big	= clamp(vol_big + step,0,1)
+			elseif rain_factor > 0.4 then
+			vol_low = clamp(vol_low - step,0,1)
+			vol_med	= clamp(vol_med + step,0,1)
+			vol_big	= clamp(vol_big - step,0,1)
+			else
+			vol_low = clamp(vol_low + step,0,1)
+			vol_med	= clamp(vol_med - step,0,1)
+			vol_big	= clamp(vol_big - step,0,1)
+			end
+
+			vol_hlm = (actor_effects.is_mask_on() and rain_volume) or 0
+			vol_int = clamp(vol_int - step,0,1)
 		end
 
 	else
-		volume1 = 0
-		volume2 = 0
+		vol_low = clamp(vol_low - step,0,1)
+		vol_med	= clamp(vol_med - step,0,1)
+		vol_big	= clamp(vol_big - step,0,1)
+		vol_int = clamp(vol_int - step,0,1)
 	end
 
-	xr_sound.play_sound_looped(AC_ID, sound1)
-	xr_sound.play_sound_looped(AC_ID, sound2)
+	xr_sound.play_sound_looped(AC_ID, low)
+	xr_sound.play_sound_looped(AC_ID, med)
+	xr_sound.play_sound_looped(AC_ID, big)
+	xr_sound.play_sound_looped(AC_ID, int)
+	xr_sound.play_sound_looped(AC_ID, hlm)
 
-	xr_sound.set_volume_sound_looped(AC_ID, sound1, volume1)
-	xr_sound.set_volume_sound_looped(AC_ID, sound2, volume2)
+	xr_sound.set_volume_sound_looped(AC_ID, low, vol_low * rain_volume)
+	xr_sound.set_volume_sound_looped(AC_ID, med, vol_med * rain_volume)
+	xr_sound.set_volume_sound_looped(AC_ID, big, vol_big * rain_volume)
+	xr_sound.set_volume_sound_looped(AC_ID, int, vol_int)
+	xr_sound.set_volume_sound_looped(AC_ID, int, vol_hlm)
 
-	--printf("-Dynamic rain sounds - rain_factor: %s - rain_volume: %s - volume1: %s - volume2: %s", rain_factor, rain_volume, volume1, volume2)
+	printf("Dynamic rain sounds - rain_factor: %s, rain_volume: %s, low: %s, med: %s, big: %s, int: %s, hlm: %s", rain_factor, rain_volume, vol_low, vol_med, vol_big, vol_int, vol_hlm)
 end
 
 local function update_settings()
