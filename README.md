@@ -11,7 +11,7 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 1. Download the latest release archive *(do not extract it)*: <https://github.com/oleh5230/MSIG/releases>
 2. In Mod Organizer, go to `File` > `Install Mod...` (or press `Ctrl` + `M`)
 3. Select the downloaded archive
-4. Untick '001 Miscellaneous Sound Improvements' if you want just the script dependencies without the sound changes
+4. if you want just the script dependencies, unselect '001 Miscellaneous Sound Improvements' (e.g. if you are using a different addon for inventory audio)
 5. Click 'Install'
 6. Enable the installed mod
 
