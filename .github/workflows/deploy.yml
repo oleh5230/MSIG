@@ -38,7 +38,7 @@ jobs:
           cp -r gamedata "001 Miscellaneous Sound Improvements [Optional]/"
           zip -r "$RELEASE_NAME.zip" \
             "001 Miscellaneous Sound Improvements [Optional]" \
-            "00 Oleh's Script Utilities and MCM menu"
+            "00 Oleh's Script Utilities and MCM menu (oleh_sound_utils)"
         env: 
           RELEASE_NAME: MSIG-${{ steps.date.outputs.today }}
       
