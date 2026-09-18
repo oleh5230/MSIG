@@ -33,7 +33,12 @@ jobs:
         run: echo "::set-output name=today::$(date +'%Y.%m.%d')"
 
       - name: Zip folder
-        run: zip -r $RELEASE_NAME.zip gamedata README.md
+        run: |
+          mkdir -p "001 Miscellaneous Sound Improvements"
+          cp -r gamedata README.md "001 Miscellaneous Sound Improvements/"
+          zip -r "$RELEASE_NAME.zip" \
+            "001 Miscellaneous Sound Improvements" \
+            "00 Oleh's Script Utilities and MCM menu"
         env: 
           RELEASE_NAME: MSIG-${{ steps.date.outputs.today }}
       
