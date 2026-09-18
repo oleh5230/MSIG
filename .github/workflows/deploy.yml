@@ -35,7 +35,7 @@ jobs:
       - name: Zip folder
         run: |
           mkdir -p "001 Miscellaneous Sound Improvements"
-          cp -r gamedata "001 Miscellaneous Sound Improvements/"
+          cp -r gamedata "001 Miscellaneous Sound Improvements [Optional]/"
           zip -r "$RELEASE_NAME.zip" \
             "001 Miscellaneous Sound Improvements [Optional]" \
             "00 Oleh's Script Utilities and MCM menu"
