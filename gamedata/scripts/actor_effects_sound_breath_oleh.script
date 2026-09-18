@@ -1,0 +1,45 @@
+-- more maskless breathing samples
+-- no low health sounds
+-- oleh5230, 18.09.26
+
+local opt
+local breath_sound
+local snd_tg = 0
+local run_play = false
+local last_snd = 0
+
+samples = 10
+
+play_sound_breath = actor_effects.play_sound_breath
+function actor_effects.play_sound_breath(actor)
+	local tg = time_global()
+    local health = actor.health
+
+	if (tg < snd_tg) or (health < 0) then
+		return
+	end
+
+    if (actor_effects.actor_speed_time > opt.speed.time_mini) or (actor.power < opt.speed.stamina) then
+        local level = math.ceil(3*actor_effects.actor_speed_time/44) or 0
+
+        local roll = math.random(10)
+        -- if roll == last_snd then
+        --     roll = last_snd % 11
+        -- end
+        -- last_snd = roll
+
+        printf("actor_effects breath level: %s", level)
+        breath_sound = sound_object("actor\\" .. (run_play and "exhale_" or "inhale_") .. (level > 1 and "fast" or "med") .. roll)
+        breath_sound:play(actor, 0, sound_object.s2d)
+        --breath_sound.volume = (actor_effects.cam_dist > opt.cam_dist) and 0 or (1 - actor_effects.cam_dist/opt.cam_dist)
+        snd_tg = tg+breath_sound:length() --*1.15
+        run_play = not run_play
+    end
+end
+
+function on_game_start()
+    if actor_effects then
+        opt = actor_effects.opt
+        RegisterScriptCallback("on_option_change",function() opt = actor_effects.opt end)
+    end
+end

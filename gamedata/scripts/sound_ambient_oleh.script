@@ -1,4 +1,7 @@
--- multi-sample rain sounds
+-- more rain sound samples
+-- volume interpolation
+-- MCM settings
+-- Spatial Audio Rework patch
 -- oleh5230, 17.09.26
 
 local low = "rain_weak"
@@ -19,28 +22,27 @@ local vol_int = 0
 
 local step = 0.01
 
+local volume_rain = 1
+local volume_indoor_rain = 1
+local volume_helmet_rain = 1
 local clamp = clamp
 local opt = {
 	ambient_volume = 1,
 	effects_wind_enabled = true,
 	effects_rain_enabled = true,
-	volume_rain = 1,
-	volume_indoor_rain = 1,
-	volume_helmet_rain = 1,
 }
 update_rain_helm_sound = sound_ambient.update_rain_helm_sound
 function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, bLevelUnderground)
 
 	if not bLevelUnderground and rain_factor > 0 and opt.effects_rain_enabled then
-
-		if inside then
+		if sar_snd_replacer and sar_snd_replacer.isIndoor(db.actor) >= 1 or inside then
 			vol_low = clamp(vol_low - step,0,1)
 			vol_med	= clamp(vol_med - step,0,1)
 			vol_big	= clamp(vol_big - step,0,1)
 
-			vol_hlm_low = clamp(vol_low - step,0,1)
-			vol_hlm_med	= clamp(vol_med - step,0,1)
-			vol_hlm_big	= clamp(vol_big - step,0,1)
+			--vol_hlm_low = 0 --clamp(vol_low - step,0,1)
+			vol_hlm_med	= 0 --clamp(vol_med - step,0,1)
+			vol_hlm_big	= 0 --clamp(vol_big - step,0,1)
 
 			vol_int = clamp(vol_int + step,0,1)
 
@@ -52,7 +54,7 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 
 				-- vol_hlm_low = clamp(vol_hlm_low - step,0,1)
 				vol_hlm_med	= clamp(vol_hlm_med - step,0,1)
-				vol_hlm_big	= actor_effects.is_mask_on() and clamp(vol_hlm_big + step,0,1) or clamp(vol_hlm_big - step,0,1)
+				vol_hlm_big	= actor_effects.is_mask_on() and 1 or clamp(vol_hlm_big - step,0,1)
 
 			elseif rain_factor > 0.4 then
 				vol_low = clamp(vol_low - step,0,1)
@@ -60,8 +62,8 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 				vol_big	= clamp(vol_big - step,0,1)
 
 				-- vol_hlm_low = clamp(vol_hlm_low - step,0,1)
-				vol_hlm_med	= actor_effects.is_mask_on() and clamp(vol_hlm_med + step,0,1) or clamp(vol_hlm_med - step,0,1)
-				vol_hlm_big	= clamp(vol_hlm_big - step,0,1)
+				vol_hlm_med	= actor_effects.is_mask_on() and 1 or clamp(vol_hlm_med - step,0,1)
+				vol_hlm_big	= 0 --clamp(vol_hlm_big - step,0,1)
 
 			else
 				vol_low = clamp(vol_low + step,0,1)
@@ -69,8 +71,8 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 				vol_big	= clamp(vol_big - step,0,1)
 
 				-- vol_hlm_low = actor_effects.is_mask_on() and clamp(vol_hlm_low + step,0,1) or clamp(vol_hlm_low - step,0,1)
-				vol_hlm_med	= clamp(vol_hlm_med - step,0,1)
-				vol_hlm_big	= clamp(vol_hlm_big - step,0,1)
+				vol_hlm_med	= 0 --clamp(vol_hlm_med - step,0,1)
+				vol_hlm_big	= 0 --clamp(vol_hlm_big - step,0,1)
 			end
 
 			vol_int = clamp(vol_int - step,0,1)
@@ -88,6 +90,31 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 		vol_int = clamp(vol_int - step,0,1)
 	end
 
+	xr_sound.set_volume_sound_looped(AC_ID, low, vol_low * rain_volume * volume_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, med, vol_med * rain_volume * volume_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, big, vol_big * rain_volume * volume_rain)
+
+	-- xr_sound.set_volume_sound_looped(AC_ID, hlm_low, vol_hlm_low * rain_volume)
+	xr_sound.set_volume_sound_looped(AC_ID, hlm_med, vol_hlm_med * rain_volume * volume_helmet_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, hlm_big, vol_hlm_big * rain_volume * volume_helmet_rain)
+
+	xr_sound.set_volume_sound_looped(AC_ID, int, vol_int * volume_indoor_rain)
+
+	--printf("Dynamic rain sounds - rain_factor: %s, rain_volume: %s, low: %s, med: %s, big: %s, int: %s", rain_factor, rain_volume, vol_low, vol_med, vol_big, vol_int)
+	--printf("isIndoor: %s", sar_snd_replacer and sar_snd_replacer.isIndoor(db.actor))
+end
+
+local function update_settings()
+	opt.effects_rain_enabled = ui_options.get("sound/environment/helmet_rain_sound")
+	opt.ambient_volume = ui_options.get("sound/environment/ambient_volume")
+	if ui_mcm and oleh_sounds_mcm and oleh_sounds_mcm.on_mcm_load then
+		volume_rain = ui_mcm.get("oleh_sounds/environment/volume_rain") or 1
+		volume_indoor_rain = ui_mcm.get("oleh_sounds/environment/volume_indoor_rain") or 1
+		volume_helmet_rain = ui_mcm.get("oleh_sounds/environment/volume_helmet_rain") or 1
+	end
+end
+
+local function actor_on_first_update()
 	xr_sound.play_sound_looped(AC_ID, low)
 	xr_sound.play_sound_looped(AC_ID, med)
 	xr_sound.play_sound_looped(AC_ID, big)
@@ -98,29 +125,16 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 
 	xr_sound.play_sound_looped(AC_ID, int)
 
-	xr_sound.set_volume_sound_looped(AC_ID, low, vol_low * rain_volume * opt.volume_rain)
-	xr_sound.set_volume_sound_looped(AC_ID, med, vol_med * rain_volume * opt.volume_rain)
-	xr_sound.set_volume_sound_looped(AC_ID, big, vol_big * rain_volume * opt.volume_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, low, 0)
+	xr_sound.set_volume_sound_looped(AC_ID, med, 0)
+	xr_sound.set_volume_sound_looped(AC_ID, big, 0)
 
-	-- xr_sound.set_volume_sound_looped(AC_ID, hlm_low, vol_hlm_low * rain_volume)
-	xr_sound.set_volume_sound_looped(AC_ID, hlm_med, vol_hlm_med * rain_volume * opt.volume_helmet_rain)
-	xr_sound.set_volume_sound_looped(AC_ID, hlm_big, vol_hlm_big * rain_volume * opt.volume_helmet_rain)
+	-- xr_sound.set_volume_sound_looped(AC_ID, hlm_low, 0)
+	xr_sound.set_volume_sound_looped(AC_ID, hlm_med, 0)
+	xr_sound.set_volume_sound_looped(AC_ID, hlm_big, 0)
 
-	xr_sound.set_volume_sound_looped(AC_ID, int, vol_int * opt.volume_indoor_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, int, 0)
 
-	--printf("Dynamic rain sounds - rain_factor: %s, rain_volume: %s, low: %s, med: %s, big: %s, int: %s", rain_factor, rain_volume, vol_low, vol_med, vol_big, vol_int)
-end
-
-local function update_settings()
-	opt.effects_wind_enabled = ui_options.get("sound/environment/wind_sound")
-	opt.effects_rain_enabled = ui_options.get("sound/environment/helmet_rain_sound")
-	opt.ambient_volume = ui_options.get("sound/environment/ambient_volume")
-	opt.volume_rain = ui_mcm.get("oleh_sounds/environment/volume_rain") or 1
-	opt.volume_indoor_rain = ui_mcm.get("oleh_sounds/environment/volume_indoor_rain") or 1
-	opt.volume_helmet_rain = ui_mcm.get("oleh_sounds/environment/volume_helmet_rain") or 1
-end
-
-local function actor_on_first_update()
 	update_settings()
 end
 
