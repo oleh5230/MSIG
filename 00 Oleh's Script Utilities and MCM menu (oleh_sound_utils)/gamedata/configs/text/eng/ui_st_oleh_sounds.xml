@@ -18,6 +18,12 @@
 	<string id="ui_mcm_title_oleh_sounds_general">
 		<text>General Settings</text>
 	</string>
+	<string id="ui_mcm_menu_environment">
+		<text>Environment</text>
+	</string>
+	<string id="ui_mcm_title_oleh_sounds_environment">
+		<text>Environment Sounds</text>
+	</string>
 	<string id="ui_mcm_title_oleh_sounds_movement">
 		<text>Movement Sounds</text>
 	</string>
@@ -39,6 +45,16 @@
 	</string>
 	<string id="ui_mcm_oleh_sounds_general_ice_patch_desc">
 		<text>Fixes casings sound effects on ice.</text>
+	</string>
+
+	<string id="ui_mcm_oleh_sounds_environment_volume_rain">
+		<text>Outdoor Rain Volume</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_indoor_rain">
+		<text>Indoor Rain Volume</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_helmet_rain">
+		<text>Raindrops on Helmet Volume</text>
 	</string>
 
 	<string id="ui_mcm_oleh_sounds_movement_player_disc">

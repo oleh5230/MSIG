@@ -1,5 +1,5 @@
 -- removes legacy mcm menus for two addons
-if extended_movement_sounds_mcm and grok_casings_sounds_mcm.VERSION and grok_casings_sounds_mcm.VERSION >= 5 then grok_casings_sounds_mcm.on_mcm_load = function() end end
+if extended_movement_sounds_mcm and grok_casings_sounds_mcm.VERSION and grok_casings_sounds_mcm.VERSION >= 5 then grok_casings_sounds_mcm.on_mcm_load =  function() end end
 if extended_movement_sounds_mcm and extended_movement_sounds_mcm.VERSION and extended_movement_sounds_mcm.VERSION >= 5 then extended_movement_sounds_mcm.on_mcm_load = function() end end
 
 -- common mcm menu for all three addons
@@ -105,6 +105,17 @@ function on_mcm_load()
                     {id = "divider", type = "line"},
                     {id = "enabled_inventory_hover", type = "check", val = 1, def = true},
                     {id = "volume_inventory_hover", type = "track", val = 2, min = 0, max = 2, step = 0.05, def = 1},
+                }
+            },
+            {
+                id = "environment",
+                sh = true,
+                gr = {
+                    {id = "title", type = "slide", link = "ui_options_slider_weather_storm", text = "ui_mcm_title_oleh_sounds_environment", size = {512, 50}, spacing = 20},
+
+                    {id = "volume_rain", type = "track", val = 2, min = 0, max = 1, step = 0.05, def = 1},
+                    {id = "volume_indoor_rain", type = "track", val = 2, min = 0, max = 1, step = 0.05, def = 1},
+                    {id = "volume_helmet_rain", type = "track", val = 2, min = 0, max = 1, step = 0.05, def = 1},
                 }
             },
         }
