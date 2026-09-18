@@ -11,7 +11,9 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 1. Download the latest release archive *(do not extract it)*: <https://github.com/oleh5230/MSIG/releases>
 2. In Mod Organizer, go to `File` > `Install Mod...` (or press `Ctrl` + `M`)
 3. Select the downloaded archive
-4. Enable the installed mod
+4. Untick '001 Miscellaneous Sound Improvements' if you want just the script dependencies without the sound changes
+5. Click 'Install'
+6. Enable the installed mod
 
 ## Recommended addons
 Only sound addons I use personally (excluding default GAMMA addons)
