@@ -6,3 +6,9 @@
 *.bkp
 *.exe
 *.ini
+
+oleh_sound_utils.script
+oleh_sounds_mcm.script
+oleh_misc_sounds_mcm.script
+ui_st_oleh_sounds.xml
+ui_st_oleh_misc_sounds.xml
