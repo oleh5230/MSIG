@@ -47,13 +47,16 @@
 		<text>Fixes casings sound effects on ice.</text>
 	</string>
 
-	<string id="ui_mcm_oleh_sounds_environment_volume_rain">
+	<string id="ui_mcm_oleh_sounds_environment_volume_rain_master">
+		<text>Master Rain Volume</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_rain_outdoor">
 		<text>Outdoor Rain Volume</text>
 	</string>
-	<string id="ui_mcm_oleh_sounds_environment_volume_indoor_rain">
+	<string id="ui_mcm_oleh_sounds_environment_volume_rain_indoor">
 		<text>Indoor Rain Volume</text>
 	</string>
-	<string id="ui_mcm_oleh_sounds_environment_volume_helmet_rain">
+	<string id="ui_mcm_oleh_sounds_environment_volume_rain_helmet">
 		<text>Raindrops on Helmet Volume</text>
 	</string>
 
