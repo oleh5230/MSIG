@@ -38,7 +38,7 @@
 		<text>C-Consciousness Grass Overgrown Patch</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_general_grass_patch_desc">
-		<text>Replaces dirt movement sounds with grass ones. Can be used without C-Consciousness Grass</text>
+		<text>Replaces dirt movement sounds with grass ones. Can be used without C-Consciousness Grass.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_general_ice_patch">
 		<text>Screen Space Shaders Ice Version Patch</text>
@@ -79,10 +79,22 @@
 		<text>Enable Backpack Rattle</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_movement_enabled_backpack_rustle_sounds_desc">
-		<text>Backpack rattle volume scales with carry weight</text>
+		<text>Backpack rattle volume scales with carry weight.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_movement_volume_backpack_rustle_sounds">
 		<text>Backpack Rattle Volume</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_movement_enabled_sprint_breathing">
+		<text>Enable Breathing Sounds</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_movement_volume_sprint_breathing">
+		<text>Breathing Sounds Volume</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_movement_enabled_mask_breathing">
+		<text>Enable Gasmask Breathing Sounds</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_movement_volume_mask_breathing">
+		<text>Gasmask Breathing Sounds Volume</text>
 	</string>
 
 	<string id="ui_mcm_oleh_sounds_movement_enabled_servo_sounds">
@@ -92,7 +104,7 @@
 		<text>Legacy Exo Sounds</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_movement_legacy_servo_sounds_desc">
-		<text>Use exo servo sounds from the original addon</text>
+		<text>Use exo servo sounds from the original addon.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_movement_volume_servo_sounds">
 		<text>Exo Sounds Volume</text>
@@ -180,7 +192,7 @@
 		<text>Player Gunfire Volume</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_weapons_volume_gunfire_desc">
-		<text>Also affects some weapons with integrated suppressors</text>
+		<text>Also affects some weapons with integrated suppressors.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_weapons_volume_gunfire_sil">
 		<text>Player Gunfire Volume (Suppressed)</text>
@@ -189,7 +201,7 @@
 		<text>NPC Gunfire Volume</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_weapons_volume_gunfire_npc_desc">
-		<text>Also affects some weapons with integrated suppressors</text>
+		<text>Also affects some weapons with integrated suppressors.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_weapons_volume_gunfire_sil_npc">
 		<text>NPC Gunfire Volume (Suppressed)</text>
@@ -241,7 +253,7 @@
 		<text>Enable Low Ammo Sounds</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_weapons_enabled_reload_hint_desc">
-		<text>Extra shooting sound effects when ammo in the magazine is about to be depleted</text>
+		<text>Extra shooting sound effects when ammo in the magazine is about to be depleted.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_weapons_volume_reload_hint">
 		<text>Low Ammo Sounds Volume</text>
