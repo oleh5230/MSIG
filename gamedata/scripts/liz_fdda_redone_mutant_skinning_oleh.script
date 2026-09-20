@@ -1,0 +1,3 @@
+function liz_fdda_redone_mutant_skinning.get_mutant_skin_speed(knife_object)
+    return 1 -- no fun allowed
+end
