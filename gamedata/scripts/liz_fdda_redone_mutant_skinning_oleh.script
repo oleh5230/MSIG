@@ -1,3 +1,20 @@
+local mcm_auto_loot_all = liz_fdda_redone_mcm and liz_fdda_redone_mcm.get_config("skinning/auto_loot_all")
+
+-- removes item pickup sounds if FDDAR auto pickup is on
+start = ui_mutant_loot.start
+ui_mutant_loot.start = function(obj, for_bug1, for_bug2)
+    if mcm_auto_loot_all then
+        itms_manager.timeout_snd_on_take(250)
+    end
+    start(obj, for_bug1, for_bug2)
+end
+
+-- no fun allowed
 function liz_fdda_redone_mutant_skinning.get_mutant_skin_speed(knife_object)
-    return 1 -- no fun allowed
+    return 1
+end
+
+function on_game_start()
+    mcm_auto_loot_all = liz_fdda_redone_mcm and liz_fdda_redone_mcm.get_config("skinning/auto_loot_all")
+    RegisterScriptCallback("on_option_change", function() mcm_auto_loot_all = liz_fdda_redone_mcm and liz_fdda_redone_mcm.get_config("skinning/auto_loot_all") end)
 end

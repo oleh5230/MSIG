@@ -204,6 +204,7 @@ end
 
 -- fix for items spawned after opening a container
 function GUI_on_show(name)
+	printf("%s", name)
 	if name == "UIInventory" and ui_inventory.GUI and ui_inventory.GUI.mode == "loot" then
 		-- increased duration for demonized exes' ammo aggregation
 		itms_manager.print_dbg("UIInventory timeout")
