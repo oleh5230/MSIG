@@ -59,6 +59,12 @@
 	<string id="ui_mcm_oleh_sounds_environment_volume_rain_helmet">
 		<text>Raindrops on Helmet Volume</text>
 	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_emission_disc">
+		<text>Emission Volume setting does not apply to thunder.</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_emission">
+		<text>Emission Volume</text>
+	</string>
 
 	<string id="ui_mcm_oleh_sounds_movement_player_disc">
 		<text>Settings below apply to player sounds only. Footstep settings do not apply to water.</text>
