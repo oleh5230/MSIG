@@ -36,7 +36,7 @@ local opt = {
 update_rain_helm_sound = sound_ambient.update_rain_helm_sound
 function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, bLevelUnderground)
 
-	if not bLevelUnderground and rain_factor > 0 and opt.effects_rain_enabled then
+	if not bLevelUnderground and rain_factor > 0 then
 		--if sar_snd_replacer and sar_snd_replacer.isIndoor(db.actor) >= 1 or level.rain_hemi() < 0.1 then
 		if level.rain_hemi() < 0.1 then
 			vol_low = clamp(vol_low - step,0,1)

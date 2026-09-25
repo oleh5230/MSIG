@@ -40,11 +40,14 @@
 	<string id="ui_mcm_oleh_sounds_general_grass_patch_desc">
 		<text>Replaces dirt movement sounds with grass ones. Can be used without C-Consciousness Grass.</text>
 	</string>
+	<string id="ui_mcm_oleh_sounds_general_ice_patch_hint">
+		<text>If footstep sounds on ice are incorrect, hide/delete 'material_pairs_actor_collide.ltx' in the game files.</text>
+	</string>
 	<string id="ui_mcm_oleh_sounds_general_ice_patch">
 		<text>Screen Space Shaders Ice Version Patch</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_general_ice_patch_desc">
-		<text>Fixes casings sound effects on ice.</text>
+		<text>Fixes jump and casings sound effects on ice.</text>
 	</string>
 
 	<string id="ui_mcm_oleh_sounds_environment_volume_rain_master">
