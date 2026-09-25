@@ -71,7 +71,10 @@ function actor_effects.play_sound_breath_mask(actor)
 end
 
 local function on_option_change()
-    if actor_effects then opt = actor_effects.opt end
+    if actor_effects then
+        actor_effects.opt.enable_breathing_sound = true
+        opt = actor_effects.opt
+    end
 
 	if ui_mcm and oleh_sounds_mcm then
 		enabled       = ui_mcm.get("oleh_sounds/movement/enabled_sprint_breathing")

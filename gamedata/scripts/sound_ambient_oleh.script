@@ -37,8 +37,8 @@ update_rain_helm_sound = sound_ambient.update_rain_helm_sound
 function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, bLevelUnderground)
 
 	if not bLevelUnderground and rain_factor > 0 and opt.effects_rain_enabled then
-		--if sar_snd_replacer and sar_snd_replacer.isIndoor(db.actor) >= 1 or level.rain_hemi() < 0.25 then
-		if level.rain_hemi() < 0.05 then
+		--if sar_snd_replacer and sar_snd_replacer.isIndoor(db.actor) >= 1 or level.rain_hemi() < 0.1 then
+		if level.rain_hemi() < 0.1 then
 			vol_low = clamp(vol_low - step,0,1)
 			vol_med	= clamp(vol_med - step,0,1)
 			vol_big	= clamp(vol_big - step,0,1)
@@ -103,7 +103,7 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 	xr_sound.set_volume_sound_looped(AC_ID, hlm_med, vol_hlm_med * rain_volume * volume_helmet_rain)
 	xr_sound.set_volume_sound_looped(AC_ID, hlm_big, vol_hlm_big * rain_volume * volume_helmet_rain)
 
-	xr_sound.set_volume_sound_looped(AC_ID, int, vol_int * volume_indoor_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, int, vol_int * rain_factor * volume_indoor_rain)
 
 	--printf("Dynamic rain sounds - rain_factor: %s, rain_volume: %s, low: %s, med: %s, big: %s, int: %s", rain_factor, rain_volume, vol_low, vol_med, vol_big, vol_int)
 end
