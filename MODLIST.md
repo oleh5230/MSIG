@@ -17,4 +17,5 @@ Only sound addons I use personally (excluding default GAMMA addons)
   - [ADDON PATCH] S2 HoC Soundscape Overhaul
   - [GAMMA] Storms and PSI Blowouts
   - [GAMMA] Detectors
-  Other modules are left unselcted
+  
+  Other modules are left unselected
