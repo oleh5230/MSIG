@@ -11,6 +11,7 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 5. Click 'Install'
 6. Enable the installed mod
 Recommended addons and load order: https://github.com/oleh5230/MSIG/blob/main/MODLIST.md
+
 **Disabling default GAMMA sound addons is not required**
 
 ## Features
