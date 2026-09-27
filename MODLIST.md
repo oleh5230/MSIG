@@ -19,6 +19,7 @@ Only sound addons I use personally (excluding default GAMMA addons)
   - [GAMMA] Detectors
   
   Other modules are left unselected
+  
 [Relax'ing Ambience Overhaul](https://www.moddb.com/mods/stalker-anomaly/addons/relaxing-the-ambience-overhaul-rao-upd06152025) (subjective, try it if you're bored of GAMMA soundtrack)
 
 ## Incompatible addons
