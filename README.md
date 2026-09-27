@@ -8,7 +8,7 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 
 **Disabling default GAMMA sound addons is not required**
 
-1. Download the latest release archive *(do not extract it)*: <https://github.com/oleh5230/MSIG/releases>
+1. Download the latest release archive **(not source code)**: <https://github.com/oleh5230/MSIG/releases>
 2. In Mod Organizer, go to `File` > `Install Mod...` (or press `Ctrl` + `M`)
 3. Select the downloaded archive
 4. If you want just the script dependencies, unselect '001 Miscellaneous Sound Improvements' (e.g. if you are using a different addon for inventory audio)
@@ -17,6 +17,8 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 
 ## Recommended addons
 Only sound addons I use personally (excluding default GAMMA addons)
+<img width="540" height="261" alt="image" src="https://github.com/user-attachments/assets/3ca1118d-1940-4d8b-9b03-d6e241d75fb6" />
+
 - [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
 - [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
 - [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
@@ -24,6 +26,11 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - [MovementSFX](https://github.com/oleh5230/MovementSFX)
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
+- [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
+  - [GAMMA] Ambience Basic
+  - [ADDON PATCH] S2 HoC Soundscape Overhaul
+  - [GAMMA] Storms and PSI Blowouts
+  - [GAMMA] Detectors
 
 ## Features
 - User interface sounds
