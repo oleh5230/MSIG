@@ -12,7 +12,9 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
 - [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
+  - None *(Inventory and core)*
   - [GAMMA] Ambience Basic
   - [ADDON PATCH] S2 HoC Soundscape Overhaul
   - [GAMMA] Storms and PSI Blowouts
   - [GAMMA] Detectors
+  Other modules are left unselcted
