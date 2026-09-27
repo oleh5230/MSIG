@@ -10,7 +10,7 @@ local big = "rain_strong"
 local hlm_low = "rain_helm_weak"
 local hlm_med = "rain_helm_medium"
 local hlm_big = "rain_helm_strong"
-local int = "rain_indoors"
+local int = "rain_interior"
 
 local vol_low = 0
 local vol_med = 0
@@ -44,66 +44,66 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 			vol_big	= clamp(vol_big - step,0,1)
 
 			--vol_hlm_low = 0 --clamp(vol_low - step,0,1)
-			vol_hlm_med	= 0 --clamp(vol_med - step,0,1)
-			vol_hlm_big	= 0 --clamp(vol_big - step,0,1)
+			vol_hlm_med	= 0
+			vol_hlm_big	= 0
 
 			if rain_factor > 0.4 then
-				vol_int = clamp(vol_int + step,0,1)
+				vol_int = clamp(vol_int + step,0,rain_factor * volume_indoor_rain)
 			end
 
 		else
 			if rain_factor > 0.8 then
-				vol_low = clamp(vol_low - step,0,1)
-				vol_med	= clamp(vol_med - step,0,1)
-				vol_big	= clamp(vol_big + step,0,1)
+				vol_low = clamp(vol_low - step,0,rain_volume * volume_outdoor_rain)
+				vol_med	= clamp(vol_med - step,0,rain_volume * volume_outdoor_rain)
+				vol_big	= clamp(vol_big + step,0,rain_volume * volume_outdoor_rain)
 
-				-- vol_hlm_low = clamp(vol_hlm_low - step,0,1)
+				-- vol_hlm_low = 0
 				vol_hlm_med	= clamp(vol_hlm_med - step,0,1)
-				vol_hlm_big	= actor_effects.is_mask_on() and 1 or clamp(vol_hlm_big - step,0,1)
+				vol_hlm_big	= actor_effects.is_mask_on() and rain_volume * volume_helmet_rain or clamp(vol_hlm_big - step,0,1)
 
 			elseif rain_factor > 0.4 then
-				vol_low = clamp(vol_low - step,0,1)
-				vol_med	= clamp(vol_med + step,0,1)
-				vol_big	= clamp(vol_big - step,0,1)
+				vol_low = clamp(vol_low - step,0,rain_volume * volume_outdoor_rain)
+				vol_med	= clamp(vol_med + step,0,rain_volume * volume_outdoor_rain)
+				vol_big	= clamp(vol_big - step,0,rain_volume * volume_outdoor_rain)
 
-				-- vol_hlm_low = clamp(vol_hlm_low - step,0,1)
-				vol_hlm_med	= actor_effects.is_mask_on() and 1 or clamp(vol_hlm_med - step,0,1)
-				vol_hlm_big	= 0 --clamp(vol_hlm_big - step,0,1)
+				-- vol_hlm_low = 0
+				vol_hlm_med	= actor_effects.is_mask_on() and rain_volume * volume_helmet_rain or clamp(vol_hlm_med - step,0,1)
+				vol_hlm_big	= 0
 
 			else
-				vol_low = clamp(vol_low + step,0,1)
-				vol_med	= clamp(vol_med - step,0,1)
-				vol_big	= clamp(vol_big - step,0,1)
+				vol_low = clamp(vol_low + step,0,rain_volume * volume_outdoor_rain)
+				vol_med	= clamp(vol_med - step,0,rain_volume * volume_outdoor_rain)
+				vol_big	= clamp(vol_big - step,0,rain_volume * volume_outdoor_rain)
 
-				-- vol_hlm_low = actor_effects.is_mask_on() and clamp(vol_hlm_low + step,0,1) or clamp(vol_hlm_low - step,0,1)
-				vol_hlm_med	= 0 --clamp(vol_hlm_med - step,0,1)
-				vol_hlm_big	= 0 --clamp(vol_hlm_big - step,0,1)
+				-- vol_hlm_low = actor_effects.is_mask_on() and rain_volume * volume_helmet_rain or clamp(vol_hlm_low - step,0,1)
+				vol_hlm_med	= 0
+				vol_hlm_big	= 0
 			end
 
-			vol_int = clamp(vol_int - step,0,1)
+			vol_int = clamp(vol_int - step,0,rain_factor * volume_indoor_rain)
 		end
 
 	else
-		vol_low = clamp(vol_low - step,0,1)
-		vol_med	= clamp(vol_med - step,0,1)
-		vol_big	= clamp(vol_big - step,0,1)
+		vol_low = clamp(vol_low - step,0,rain_volume * volume_outdoor_rain)
+		vol_med	= clamp(vol_med - step,0,rain_volume * volume_outdoor_rain)
+		vol_big	= clamp(vol_big - step,0,rain_volume * volume_outdoor_rain)
 
 		-- vol_hlm_low = clamp(vol_low - step,0,1)
 		vol_hlm_med	= clamp(vol_med - step,0,1)
 		vol_hlm_big	= clamp(vol_big - step,0,1)
 
-		vol_int = clamp(vol_int - step,0,1)
+		vol_int = clamp(vol_int - step,0,rain_factor * volume_indoor_rain)
 	end
 
-	xr_sound.set_volume_sound_looped(AC_ID, low, vol_low * rain_volume * volume_outdoor_rain)
-	xr_sound.set_volume_sound_looped(AC_ID, med, vol_med * rain_volume * volume_outdoor_rain)
-	xr_sound.set_volume_sound_looped(AC_ID, big, vol_big * rain_volume * volume_outdoor_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, low, vol_low)
+	xr_sound.set_volume_sound_looped(AC_ID, med, vol_med)
+	xr_sound.set_volume_sound_looped(AC_ID, big, vol_big)
 
 	-- xr_sound.set_volume_sound_looped(AC_ID, hlm_low, vol_hlm_low * rain_volume)
-	xr_sound.set_volume_sound_looped(AC_ID, hlm_med, vol_hlm_med * rain_volume * volume_helmet_rain)
-	xr_sound.set_volume_sound_looped(AC_ID, hlm_big, vol_hlm_big * rain_volume * volume_helmet_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, hlm_med, vol_hlm_med)
+	xr_sound.set_volume_sound_looped(AC_ID, hlm_big, vol_hlm_big)
 
-	xr_sound.set_volume_sound_looped(AC_ID, int, vol_int * rain_factor * volume_indoor_rain)
+	xr_sound.set_volume_sound_looped(AC_ID, int, vol_int)
 
 	--printf("Dynamic rain sounds - rain_factor: %s, rain_volume: %s, low: %s, med: %s, big: %s, int: %s", rain_factor, rain_volume, vol_low, vol_med, vol_big, vol_int)
 end
