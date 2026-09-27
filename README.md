@@ -17,7 +17,7 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 
 ## Recommended addons
 Only sound addons I use personally (excluding default GAMMA addons)
-<img width="540" height="261" alt="image" src="https://github.com/user-attachments/assets/3ca1118d-1940-4d8b-9b03-d6e241d75fb6" />
+<img width="538" height="279" alt="image" src="https://github.com/user-attachments/assets/e68f1760-4076-4b52-844b-87055a9ae20b" />
 
 - [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
 - [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
