@@ -1,5 +1,7 @@
 Only sound addons I use personally (excluding default GAMMA addons)
+
 **Disabling default GAMMA sound addons is not required**
+
 <img width="537" height="303" alt="image" src="https://github.com/user-attachments/assets/4941e5e5-3b0c-4cac-ad07-1a16228011d2" />
 
 - [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
