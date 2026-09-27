@@ -19,3 +19,8 @@ Only sound addons I use personally (excluding default GAMMA addons)
   - [GAMMA] Detectors
   
   Other modules are left unselected
+
+## Incompatible addons
+- Audio Expansion Inventory/Movement
+- Dark signal Amplified footsteps
+- Dark signal Amplified Item and UI
