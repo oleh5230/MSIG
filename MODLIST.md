@@ -11,6 +11,7 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
 - [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
+
   By default Arrival affects gameplay, if you want to keep SFX and VFX only:
   - delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
   - delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
