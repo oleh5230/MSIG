@@ -6,11 +6,15 @@ Only sound addons I use personally (excluding default GAMMA addons)
 
 - [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
 - [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
-- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies) (SFX and VFX only)
 - [Oleh's Weapon Sounds](https://github.com/oleh5230/WSTFG)
 - [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX)
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
+- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
+  By default Arrival affects gameplay, if you want to keep SFX and VFX only:
+  - delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
+  - delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
+
 - [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
   - None *(Inventory and core)*
   - [GAMMA] Ambience Basic
