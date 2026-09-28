@@ -23,9 +23,9 @@ Only sound addons I use personally (excluding default GAMMA addons)
   Other modules are left unselected
   
 - [Relax'ing Ambience Overhaul](https://www.moddb.com/mods/stalker-anomaly/addons/relaxing-the-ambience-overhaul-rao-upd06152025) (subjective, try it if you're bored of GAMMA soundtrack)
-- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
+- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies) **(new game required)**
 
-  By default Arrival affects gameplay, if you want to keep SFX and VFX only (**new game required**):
+  By default Arrival affects gameplay, if you want to keep SFX and VFX only:
   - delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
   - delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
   
