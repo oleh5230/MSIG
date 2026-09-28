@@ -33,6 +33,5 @@ Only sound addons I use personally (excluding default GAMMA addons)
 
 
 ## Incompatible addons
-- Audio Expansion Inventory/Movement
-- Dark signal Amplified footsteps
-- Dark signal Amplified Item and UI
+- Dark signal Amplified footsteps/Audio Expansion Movement - disable MovementSFX to use a different movement addon
+- Dark signal Amplified Item and UI/Audio Expansion Inventory - reinstall MSIG without the optional module to use a different UI addon
