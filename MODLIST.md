@@ -7,11 +7,12 @@ Only sound addons I use personally (excluding default GAMMA addons)
 <img width="537" height="303" alt="image" src="https://github.com/user-attachments/assets/4941e5e5-3b0c-4cac-ad07-1a16228011d2" />
 
 - [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
-- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
+- [Oleh's Miscellaneous Sound Improvements](https://github.com/oleh5230/MSIG)
 - [Oleh's Weapon Sounds](https://github.com/oleh5230/WSTFG)
 - [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX)
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
+- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
 - [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
   - None *(Inventory and core)*
   - [GAMMA] Ambience Basic
