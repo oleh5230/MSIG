@@ -12,14 +12,6 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX)
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
-- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
-
-  By default Arrival affects gameplay, if you want to keep SFX and VFX only:
-  - delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
-  - delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
-  
-  **If you have issues after doing this don't report to Semitone or support channels, ask me or reinstall the full mod**
-
 - [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
   - None *(Inventory and core)*
   - [GAMMA] Ambience Basic
@@ -29,7 +21,15 @@ Only sound addons I use personally (excluding default GAMMA addons)
   
   Other modules are left unselected
   
-[Relax'ing Ambience Overhaul](https://www.moddb.com/mods/stalker-anomaly/addons/relaxing-the-ambience-overhaul-rao-upd06152025) (subjective, try it if you're bored of GAMMA soundtrack)
+- [Relax'ing Ambience Overhaul](https://www.moddb.com/mods/stalker-anomaly/addons/relaxing-the-ambience-overhaul-rao-upd06152025) (subjective, try it if you're bored of GAMMA soundtrack)
+- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
+
+  By default Arrival affects gameplay, if you want to keep SFX and VFX only (**new game required**):
+  - delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
+  - delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
+  
+  **If you have issues after doing this don't report to Semitone or support channels, ask me or reinstall the full mod**
+
 
 ## Incompatible addons
 - Audio Expansion Inventory/Movement
