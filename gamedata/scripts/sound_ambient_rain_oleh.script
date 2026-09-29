@@ -1,7 +1,7 @@
 -- more rain sound samples
 -- volume interpolation
 -- MCM settings
--- Spatial Audio Rework patch?
+-- Spatial Audio Rework patch
 -- oleh5230, 17.09.26
 
 local low = "rain_weak"
@@ -33,12 +33,26 @@ local opt = {
 	effects_wind_enabled = true,
 	effects_rain_enabled = true,
 }
+
+function is_indoor()
+	if sar_snd_replacer then
+		if sar_snd_replacer.isIndoor(db.actor) >= 1 then
+			return true
+		end
+	elseif level.rain_hemi() < 0.1 then
+		return true
+	end
+
+	return false
+end
+
 update_rain_helm_sound = sound_ambient.update_rain_helm_sound
 function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, bLevelUnderground)
 
 	if not bLevelUnderground and rain_factor > 0 then
-		--if sar_snd_replacer and sar_snd_replacer.isIndoor(db.actor) >= 1 or level.rain_hemi() < 0.1 then
-		if level.rain_hemi() < 0.1 then
+		local vol = sar_snd_replacer and rain_factor or rain_volume
+
+		if is_indoor() then
 			vol_low = clamp(vol_low - step,0,1)
 			vol_med	= clamp(vol_med - step,0,1)
 			vol_big	= clamp(vol_big - step,0,1)
@@ -53,46 +67,46 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 
 		else
 			if rain_factor > 0.8 then
-				vol_low = clamp(vol_low - step,0,rain_volume * volume_outdoor_rain)
-				vol_med	= clamp(vol_med - step,0,rain_volume * volume_outdoor_rain)
-				vol_big	= clamp(vol_big + step,0,rain_volume * volume_outdoor_rain)
+				vol_low = clamp(vol_low - step,0,1)
+				vol_med	= clamp(vol_med - step,0,1)
+				vol_big	= clamp(vol_big + step,0,vol * volume_outdoor_rain)
 
 				-- vol_hlm_low = 0
 				vol_hlm_med	= clamp(vol_hlm_med - step,0,1)
 				vol_hlm_big	= actor_effects.is_mask_on() and rain_volume * volume_helmet_rain or clamp(vol_hlm_big - step,0,1)
 
 			elseif rain_factor > 0.4 then
-				vol_low = clamp(vol_low - step,0,rain_volume * volume_outdoor_rain)
-				vol_med	= clamp(vol_med + step,0,rain_volume * volume_outdoor_rain)
-				vol_big	= clamp(vol_big - step,0,rain_volume * volume_outdoor_rain)
+				vol_low = clamp(vol_low - step,0,1)
+				vol_med	= clamp(vol_med + step,0,vol * volume_outdoor_rain)
+				vol_big	= clamp(vol_big - step,0,1)
 
 				-- vol_hlm_low = 0
 				vol_hlm_med	= actor_effects.is_mask_on() and rain_volume * volume_helmet_rain or clamp(vol_hlm_med - step,0,1)
 				vol_hlm_big	= 0
 
 			else
-				vol_low = clamp(vol_low + step,0,rain_volume * volume_outdoor_rain)
-				vol_med	= clamp(vol_med - step,0,rain_volume * volume_outdoor_rain)
-				vol_big	= clamp(vol_big - step,0,rain_volume * volume_outdoor_rain)
+				vol_low = clamp(vol_low + step,0,vol * volume_outdoor_rain)
+				vol_med	= clamp(vol_med - step,0,1)
+				vol_big	= clamp(vol_big - step,0,1)
 
 				-- vol_hlm_low = actor_effects.is_mask_on() and rain_volume * volume_helmet_rain or clamp(vol_hlm_low - step,0,1)
 				vol_hlm_med	= 0
 				vol_hlm_big	= 0
 			end
 
-			vol_int = clamp(vol_int - step,0,rain_factor * volume_indoor_rain)
+			vol_int = clamp(vol_int - step,0,1)
 		end
 
 	else
-		vol_low = clamp(vol_low - step,0,rain_volume * volume_outdoor_rain)
-		vol_med	= clamp(vol_med - step,0,rain_volume * volume_outdoor_rain)
-		vol_big	= clamp(vol_big - step,0,rain_volume * volume_outdoor_rain)
+		vol_low = clamp(vol_low - step,0,1)
+		vol_med	= clamp(vol_med - step,0,1)
+		vol_big	= clamp(vol_big - step,0,1)
 
 		-- vol_hlm_low = clamp(vol_low - step,0,1)
 		vol_hlm_med	= clamp(vol_med - step,0,1)
 		vol_hlm_big	= clamp(vol_big - step,0,1)
 
-		vol_int = clamp(vol_int - step,0,rain_factor * volume_indoor_rain)
+		vol_int = clamp(vol_int - step,0,1)
 	end
 
 	xr_sound.set_volume_sound_looped(AC_ID, low, vol_low)
