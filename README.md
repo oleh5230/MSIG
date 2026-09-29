@@ -4,33 +4,16 @@ MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github
 ## Installation
 *MSIG is included in GAMMA by default (2026.05.08 version), but GAMMA launcher pulls updates only on GAMMA update releases*
 
-**Load order (priority) does not matter, keep it below default GAMMA addons**
-
-**Disabling default GAMMA sound addons is not required**
-
-1. Download the latest release archive **(not source code)**: <https://github.com/oleh5230/MSIG/releases>
+1. Download the latest release archive **(not source code, important)**: <https://github.com/oleh5230/MSIG/releases>
 2. In Mod Organizer, go to `File` > `Install Mod...` (or press `Ctrl` + `M`)
 3. Select the downloaded archive
 4. If you want just the script dependencies, unselect '001 Miscellaneous Sound Improvements' (e.g. if you are using a different addon for inventory audio)
 5. Click 'Install'
 6. Enable the installed mod
 
-## Recommended addons
-Only sound addons I use personally (excluding default GAMMA addons)
-<img width="537" height="303" alt="image" src="https://github.com/user-attachments/assets/4941e5e5-3b0c-4cac-ad07-1a16228011d2" />
+Recommended addons and load order: https://github.com/oleh5230/MSIG/blob/main/MODLIST.md
 
-- [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
-- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
-- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
-- [Oleh's Weapon Sounds](https://github.com/oleh5230/WSTFG)
-- [MovementSFX](https://github.com/oleh5230/MovementSFX)
-- [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
-- [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
-- [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
-  - [GAMMA] Ambience Basic
-  - [ADDON PATCH] S2 HoC Soundscape Overhaul
-  - [GAMMA] Storms and PSI Blowouts
-  - [GAMMA] Detectors
+**Disabling default GAMMA sound addons is not required**
 
 ## Features
 - User interface sounds

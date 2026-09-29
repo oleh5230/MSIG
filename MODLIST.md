@@ -1,40 +1,37 @@
-## Description
-MSIG stands for Miscellaneous Sound Improvements for [G.A.M.M.A.](https://github.com/Grokitach/Stalker_GAMMA)
-
-## Installation
-*MSIG is included in GAMMA by default (2026.05.08 version), but GAMMA launcher pulls updates only on GAMMA update releases*
-
-**Load order (priority) does not matter, keep it below default GAMMA addons**
-
-**Disabling default GAMMA sound addons is not required**
-
-1. Download the latest release archive *(do not extract it)*: <https://github.com/oleh5230/MSIG/releases>
-2. In Mod Organizer, go to `File` > `Install Mod...` (or press `Ctrl` + `M`)
-3. Select the downloaded archive
-4. If you want just the script dependencies, unselect '001 Miscellaneous Sound Improvements' (e.g. if you are using a different addon for inventory audio)
-5. Click 'Install'
-6. Enable the installed mod
-
-## Recommended addons
 Only sound addons I use personally (excluding default GAMMA addons)
+
+- **If you encounter issues with this setup, report to me first, not addon authors or support channels**
+- **Disabling default GAMMA sound addons is not required**
+- **All of addons below are safe to install/uninstall mid-playthrough (except Arrival)**
+
+<img width="537" height="303" alt="image" src="https://github.com/user-attachments/assets/4941e5e5-3b0c-4cac-ad07-1a16228011d2" />
+
 - [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
-- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
-- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies)
+- [Oleh's Miscellaneous Sound Improvements](https://github.com/oleh5230/MSIG)
 - [Oleh's Weapon Sounds](https://github.com/oleh5230/WSTFG)
-- [MovementSFX](https://github.com/oleh5230/MovementSFX)
+- [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX)
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
+- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
+- [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
+  - None *(Inventory and core)*
+  - [GAMMA] Ambience Basic
+  - [ADDON PATCH] S2 HoC Soundscape Overhaul
+  - [GAMMA] Storms and PSI Blowouts
+  - [GAMMA] Detectors
+  
+  Other modules are left unselected
+  
+- [Relax'ing Ambience Overhaul](https://www.moddb.com/mods/stalker-anomaly/addons/relaxing-the-ambience-overhaul-rao-upd06152025) (subjective, try it if you're bored of GAMMA soundtrack)
+- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies) **(new game required)**
 
-## Features
-- User interface sounds
-- Player hit sounds
-- Mutant step sounds
-- Physics collision sounds
-- Door sounds
-- Furniture sounds
-- Vehicle sounds
-- Various fixes
+  By default Arrival affects gameplay, if you want to keep SFX and VFX only:
+  - delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
+  - delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
+  
+  **If you have issues after doing this don't report to Semitone or support channels, ask me or reinstall the full mod**
 
-## Credits
-- Shrike: anomaly, mutant, geiger and multiple inventory sounds, FDDAR sounds
-- Ani HVX: thunder, multiple inventory sounds
+
+## Incompatible addons
+- Dark signal Amplified footsteps/Audio Expansion Movement - disable MovementSFX to use a different movement addon
+- Dark signal Amplified Item and UI/Audio Expansion Inventory - reinstall MSIG without the optional module to use a different UI addon
