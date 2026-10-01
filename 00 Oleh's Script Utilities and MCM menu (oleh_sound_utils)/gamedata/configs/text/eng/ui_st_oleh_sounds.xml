@@ -62,6 +62,15 @@
 	<string id="ui_mcm_oleh_sounds_environment_volume_rain_helmet">
 		<text>Raindrops on Helmet Volume</text>
 	</string>
+	<string id="ui_mcm_oleh_sounds_environment_enabled_rain_strong">
+		<text>Use Dedicated Heavy Rain Sound</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_enabled_rain_strong_desc">
+		<text>If disabled, medium rain sound will be played during heavy rain.</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_thunder">
+		<text>Thunder Volume</text>
+	</string>
 	<string id="ui_mcm_oleh_sounds_environment_volume_emission_disc">
 		<text>Emission Volume setting does not apply to thunder.</text>
 	</string>
