@@ -36,7 +36,6 @@ Only sound addons I use personally (excluding default GAMMA addons)
 - Dark signal Amplified footsteps/Audio Expansion Movement - disable MovementSFX to use a different movement addon
 - Dark signal Amplified Item and UI/Audio Expansion Inventory - reinstall MSIG without the optional module to use a different UI addon
 
-## Recommended settings
 ## Recommended in-game settings:
 - SFX Volume (`snd_volume_eff`): `0.5` - otherwise some sounds may have imbalanced volume
 - Rendering Distance (World) (`rs_vis_distance`): at least `0.9` (50% of the slider) - otherwise distant gunfire sounds would not be audible
