@@ -26,6 +26,7 @@ Sound addons I use personally (excluding default GAMMA addons).
 
   By default Arrival affects gameplay, if you want to keep SFX and VFX only:
   - Install the mod via Mod Organizer, select modules to your preference
+  - If you selected 'Barrels and shit Scattered, keep these files: '`scripts/barrel_flame_aoe.script` `scripts/barrel_flame.script` `configs/mod_system_zz_arrival_explosions.ltx`
   - Delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
   - Delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
   
@@ -41,5 +42,8 @@ Sound addons I use personally (excluding default GAMMA addons).
 ## Recommended in-game settings:
 - SFX Volume (`snd_volume_eff`): `0.5` - otherwise some sounds may have imbalanced volume
 - Rendering Distance (World) (`rs_vis_distance`): at least `0.9` (50% of the slider) - otherwise distant gunfire sounds would not be audible
+
+## Recommended MCM settings:
+- Spatial Audio Rework\NPC-specific ray detection: off
 
 **Beware that distant gunfire sounds may have a significant impact on performance.**
