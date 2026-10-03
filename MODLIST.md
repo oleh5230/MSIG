@@ -1,4 +1,4 @@
-Only sound addons I use personally (excluding default GAMMA addons)
+Sound addons I use personally (excluding default GAMMA addons).
 
 - **If you encounter issues with this setup, report to me first, not addon authors or support channels**
 - **Disabling default GAMMA sound addons is not required**
@@ -20,16 +20,18 @@ Only sound addons I use personally (excluding default GAMMA addons)
   - [GAMMA] Storms and PSI Blowouts
   - [GAMMA] Detectors
   
-  Other modules are left unselected
+  Other modules are left unselected.
   
-- [Relax'ing Ambience Overhaul](https://www.moddb.com/mods/stalker-anomaly/addons/relaxing-the-ambience-overhaul-rao-upd06152025) (subjective, try it if you're bored of GAMMA soundtrack)
 - [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies) **(new game required)**
 
   By default Arrival affects gameplay, if you want to keep SFX and VFX only:
-  - delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
-  - delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
+  - Install the mod via Mod Organizer, select modules to your preference
+  - Delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
+  - Delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
   
-  **If you have issues after doing this don't report to Semitone or support channels, ask me or reinstall the full mod**
+  **If you have issues after doing this don't report to Semitone or support channels, ask me or reinstall the full mod.**
+  
+- [Relax'ing Ambience Overhaul](https://www.moddb.com/mods/stalker-anomaly/addons/relaxing-the-ambience-overhaul-rao-upd06152025) (subjective, try it if you're bored of GAMMA soundtrack)
 
 
 ## Incompatible addons
