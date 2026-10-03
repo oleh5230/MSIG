@@ -43,7 +43,7 @@ Sound addons I use personally (excluding default GAMMA addons).
 - SFX Volume (`snd_volume_eff`): `0.5` - otherwise some sounds may have imbalanced volume
 - Rendering Distance (World) (`rs_vis_distance`): at least `0.9` (50% of the slider) - otherwise distant gunfire sounds would not be audible
 
+**Beware that distant gunfire sounds may have a significant impact on performance.**
+
 ## Recommended MCM settings:
 - Spatial Audio Rework\NPC-specific ray detection: off
-
-**Beware that distant gunfire sounds may have a significant impact on performance.**
