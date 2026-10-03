@@ -28,7 +28,7 @@ Sound addons I use personally (excluding default GAMMA addons).
   - Install the mod via Mod Organizer, select modules to your preference
   - If you selected 'Barrels and shit Scattered, keep these files: `scripts/barrel_flame_aoe.script`,`scripts/barrel_flame.script`,`configs/mod_system_zz_arrival_explosions.ltx`
   - Delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
-  - Delete `configs` folder (except `zones` and `generators` subfolders and `mod_system_SSS_zones.ltx`)
+  - Delete `configs` folder (except `zones` and `scripts/generators` subfolders and `mod_system_SSS_zones.ltx`)
   
   **If you have issues after doing this don't report to Semitone or support channels, ask me or reinstall the full mod.**
   
