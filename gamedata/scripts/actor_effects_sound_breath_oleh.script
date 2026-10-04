@@ -67,7 +67,7 @@ function actor_effects.play_sound_breath_mask(actor)
     snd_tg = tg + breath_sound:length()--*1.25
     breath_sound:play(actor, 0, sound_object.s2d)
     --breath_sound.volume = (cam_dist > opt.cam_dist) and 0 or (1 - cam_dist/opt.cam_dist) * 0.5
-    breath_sound.volume = volume_mask * 0.25
+    breath_sound.volume = volume_mask * 0.5
 end
 
 local function on_option_change()
