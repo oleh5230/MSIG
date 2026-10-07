@@ -15,7 +15,7 @@ Sound addons I use personally (excluding default GAMMA addons).
 - [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion) - ambient beds:
   - None *(Inventory and core)*
   - [GAMMA] Ambience Basic
-  - [ADDON PATCH] S2 HoC Soundscape Overhaul
+  - [ADDON PATCH] S2 HoC Soundscape Overhaul *(if installed)*
   - [GAMMA] Storms and PSI Blowouts
   - [GAMMA] Detectors *(includes a script with questinable performance)*
   
