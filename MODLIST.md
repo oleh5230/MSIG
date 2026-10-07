@@ -21,7 +21,7 @@ Sound addons I use personally (excluding default GAMMA addons).
   
   Other modules are left unselected.
 
-- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly) - actual sound spots to maps instead of just fake ambience **(currently has an issue of some MCM toggles not working, resulting in duplicate rain sounds and questionable thunder sounds)**
+- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly) - actual sound spots on maps instead of just fake ambience **(currently has an issue of some MCM toggles not working, resulting in duplicate rain sounds and questionable thunder sounds)**
   
 - [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies) **(new game required)** - anomalies sounds and visuals
 
