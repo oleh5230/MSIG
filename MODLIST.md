@@ -12,7 +12,6 @@ Sound addons I use personally (excluding default GAMMA addons).
 - [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX)
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
-- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
 - [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
   - None *(Inventory and core)*
   - [GAMMA] Ambience Basic
@@ -21,6 +20,8 @@ Sound addons I use personally (excluding default GAMMA addons).
   - [GAMMA] Detectors
   
   Other modules are left unselected.
+
+  - [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly) (adds actual sound spots to map insted of just fake ambience, but currently has an issue of some MCM toggles not working, causing duplicate rain sounds and questionable thunder sounds.)
   
 - [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies) **(new game required)**
 
