@@ -7,8 +7,8 @@ Sound addons I use personally (excluding default GAMMA addons).
 <img width="537" height="303" alt="image" src="https://github.com/user-attachments/assets/4941e5e5-3b0c-4cac-ad07-1a16228011d2" />
 
 - [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework) - indoor reverberations + better indoors detection for MSIG rain
-- [Oleh's Miscellaneous Sound Improvements](https://github.com/oleh5230/MSIG) - mandatory for Oleh's addons
-- [Oleh's Weapon Sounds](https://github.com/oleh5230/WSTFG) - weapon foley and gunfire
+- [Oleh's Miscellaneous Sound Improvements (MSIG)](https://github.com/oleh5230/MSIG) - mandatory for Oleh's addons
+- [Oleh's Weapon Sounds (WSTFG)](https://github.com/oleh5230/WSTFG) - weapon foley and gunfire
 - [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX) - player movement
 - [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps) - stalker and mutant movement
 - [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices) - extra voices variety
