@@ -6,27 +6,28 @@ Sound addons I use personally (excluding default GAMMA addons).
 
 <img width="537" height="303" alt="image" src="https://github.com/user-attachments/assets/4941e5e5-3b0c-4cac-ad07-1a16228011d2" />
 
-- [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework)
-- [Oleh's Miscellaneous Sound Improvements](https://github.com/oleh5230/MSIG)
-- [Oleh's Weapon Sounds](https://github.com/oleh5230/WSTFG)
-- [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX)
-- [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps)
-- [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices)
-- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly)
-- [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion):
+- [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework) - indoor reverberations + better indoors detection for MSIG rain
+- [Oleh's Miscellaneous Sound Improvements (MSIG)](https://github.com/oleh5230/MSIG) - mandatory for Oleh's addons
+- [Oleh's Weapon Sounds (WSTFG)](https://github.com/oleh5230/WSTFG) - weapon foley and gunfire
+- [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX) - player movement
+- [Oleh's NPC Footstep Sounds](https://github.com/oleh5230/NPC-footsteps) - stalker and mutant movement
+- [Ukrainian voices](https://www.moddb.com/addons/dxml-anomaly-ukrainian-voices) - extra voices variety
+- [Audio Expansion](https://www.moddb.com/mods/stalker-anomaly/addons/audio-expansion) - ambient beds:
   - None *(Inventory and core)*
   - [GAMMA] Ambience Basic
-  - [ADDON PATCH] S2 HoC Soundscape Overhaul
+  - [ADDON PATCH] S2 HoC Soundscape Overhaul *(if installed)*
   - [GAMMA] Storms and PSI Blowouts
-  - [GAMMA] Detectors
+  - [GAMMA] Detectors *(includes a script with questinable performance)*
   
   Other modules are left unselected.
+
+- [S.T.A.L.K.E.R. 2 HoC - Soundscape](https://www.moddb.com/mods/stalker-anomaly/addons/stalker-2-hoc-ambience-overhaul-for-anomaly) - actual sound spots on maps instead of just fake ambience **(currently has an issue of some MCM toggles not working, resulting in duplicate rain sounds and questionable thunder sounds)**
   
-- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies) **(new game required)**
+- [Arrival](https://www.moddb.com/mods/stalker-anomaly/addons/arrival-anomalies) **(new game required)** - anomalies sounds and visuals
 
   By default Arrival affects gameplay, if you want to keep SFX and VFX only:
   - Install the mod via Mod Organizer, select modules to your preference
-  - If you selected 'Barrels and shit Scattered, keep these files: `scripts/barrel_flame_aoe.script`,`scripts/barrel_flame.script`,`configs/mod_system_zz_arrival_explosions.ltx`
+  - If you selected 'Barrels and shit Scattered, keep these files': `scripts/barrel_flame_aoe.script`,`scripts/barrel_flame.script`,`configs/mod_system_zz_arrival_explosions.ltx`
   - Delete `scripts` folder (except `arrival_environmental_particles.script` if you selected flying seeds/leaves)
   - Delete `configs` folder (except `zones` and `scripts/generators` subfolders and `mod_system_SSS_zones.ltx`)
   
