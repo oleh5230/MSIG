@@ -4,7 +4,7 @@ printf("loading monkeypatch: arti_jamming_repairs_snd")
 custom_disassembly_weapon = zzzz_arti_jamming_repairs.custom_disassembly_weapon
 zzzz_arti_jamming_repairs.custom_disassembly_weapon = function(...)
 	if itms_manager.timeout_snd_on_take and not ui_options.get("video/player/animations") then
-		itms_manager.timeout_snd_on_take(50)
+		itms_manager.timeout_snd_on_take()
 		item_parts.play_disassembly_snd("interface\\inv_disassemble_weapon")
 	end
 	custom_disassembly_weapon(...)
@@ -13,33 +13,33 @@ end
 act_fieldstrip = zzzz_arti_jamming_repairs.act_fieldstrip
 zzzz_arti_jamming_repairs.act_fieldstrip = function(...)
 	if itms_manager.timeout_snd_on_take then
-		itms_manager.timeout_snd_on_take(50)
+		itms_manager.timeout_snd_on_take()
 		item_parts.play_disassembly_snd("interface\\inv_part_weapon")
 	end
 	act_fieldstrip(...)
 end
 
 replace_part = zzzz_arti_jamming_repairs.replace_part
-zzzz_arti_jamming_repairs.replace_part = function(...)
+zzzz_arti_jamming_repairs.replace_part = function(id, part, kit_name, clean, ...)
 	if itms_manager.timeout_snd_on_take then
-		itms_manager.timeout_snd_on_take(50)
+		itms_manager.timeout_snd_on_take()
 		if clean then
 			utils_obj.play_sound("interface\\items_use\\clean_1")
 		else
 			item_parts.play_disassembly_snd("interface\\inv_part_weapon")
 		end
 	end
-	replace_part(...)
+	replace_part(id, part, kit_name, clean, ...)
 end
 
 try_replace_part = arti_jamming.try_replace_part
-arti_jamming.try_replace_part = function(...)
+function arti_jamming.try_replace_part(wpn, table, part, ...)
 	local sec = part and part:section()
 	if sec and not string.find(sec, "barrel") then
 		if itms_manager.timeout_snd_on_take then
-			itms_manager.timeout_snd_on_take(50)
+			itms_manager.timeout_snd_on_take()
 			item_parts.play_disassembly_snd("interface\\inv_part_weapon")
 		end
 	end
-	try_replace_part(...)
+	try_replace_part(wpn, table, part, ...)
 end

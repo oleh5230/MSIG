@@ -5,7 +5,7 @@ gamma_ver = true
 
 local timeout_tg = 0
 local timeout_duration = 1
-local def_timeout_duration = 1
+local def_timeout_duration = 250
 
 function itms_manager.print_dbg(txt, ...)
 	if debug then
@@ -207,11 +207,11 @@ function GUI_on_show(name)
 	if name == "UIInventory" and ui_inventory.GUI and ui_inventory.GUI.mode == "loot" then
 		-- increased duration for demonized exes' ammo aggregation
 		itms_manager.print_dbg("UIInventory timeout")
-		itms_manager.timeout_snd_on_take(250)
+		itms_manager.timeout_snd_on_take()
 
 	-- elseif name == "UIMutantLoot" and ui_mcm and ui_mcm.get("fddar/skinning/auto_loot_all") then
 	-- 	itms_manager.print_dbg("UIMutantLoot timeout")
-	-- 	itms_manager.timeout_snd_on_take(50)
+	-- 	itms_manager.timeout_snd_on_take()
 	end
 end
 
@@ -219,13 +219,13 @@ function GUI_on_hide(name)
 	-- fix for ammo spawned by ammo wheel 
 	if name == "UIWheelAmmo" then
 		itms_manager.print_dbg("UIWheelAmmo timeout")
-		itms_manager.timeout_snd_on_take(50)
+		itms_manager.timeout_snd_on_take()
 
 	-- patch for mutant skinning (to not interfere with FDDAR)
 	elseif name == "UIMutantLoot" then
 		if ui_mcm and ui_mcm.get("fddar/skinning/enable") then
 			itms_manager.print_dbg("UIMutantLoot timeout")
-			itms_manager.timeout_snd_on_take(50)
+			itms_manager.timeout_snd_on_take()
 		end
 	end
 end
@@ -233,7 +233,7 @@ end
 -- fix for items spawned upon item use (to not interfere with FDDA)
 function actor_on_item_use()
 	itms_manager.print_dbg("actor_on_item_use timeout")
-	itms_manager.timeout_snd_on_take(50)
+	itms_manager.timeout_snd_on_take()
 end
 
 -- fix for headgear/backpack equip (to not interfere with FDDAR)
@@ -242,7 +242,7 @@ function actor_item_equip(obj)
 	if (IsHeadgear(obj) and ui_mcm and ui_mcm.get("fddar/headgear_anm/enable"))
 	or (IsItem("backpack", nil, obj) and ui_mcm and ui_mcm.get("fddar/outfit_anm/enable_backpack_equip")) then
 		itms_manager.print_dbg("actor_item_equip timeout")
-		itms_manager.timeout_snd_on_take(50)
+		itms_manager.timeout_snd_on_take()
 	end
 end
 

@@ -4,6 +4,9 @@
 -- Spatial Audio Rework patch
 -- oleh5230, 17.09.26
 
+if not sound_ambient then return end
+printf("loading monkeypatch: sound_ambient_wind_rain_oleh")
+
 local low = "rain_weak"
 local med = "rain_medium"
 local big = "rain_strong"
@@ -20,7 +23,7 @@ local vol_hlm_med = 0
 local vol_hlm_big = 0
 local vol_int = 0
 
-local step = 0.01
+local step = 0.02
 
 local volume_outdoor_rain = 1
 local volume_indoor_rain = 1
@@ -35,15 +38,21 @@ local opt = {
 }
 
 function is_indoor()
-	if sar_snd_replacer then
-		if sar_main.current_score > 0.4 then
-			return true
-		end
-	elseif level.rain_hemi() < 0.1 then
+	if level.rain_hemi() < 0.1 then
 		return true
 	end
 
 	return false
+end
+
+if sar_snd_replacer then
+	function is_indoor()
+		if sar_main.current_score > 0.4 then
+			return true
+		end
+
+		return false
+	end
 end
 
 local indoor = false
@@ -129,6 +138,53 @@ function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, 
 	--printf("Dynamic rain sounds - rain_factor: %s, rain_volume: %s, low: %s, med: %s, big: %s, int: %s", rain_factor, rain_volume, vol_low, vol_med, vol_big, vol_int)
 end
 
+local sound1 = "wind_storm1"
+local sound2 = "wind_storm2"
+local sound3 = "wind_storm3"
+local sound4 = "underground_drone"
+local volume1 = 0
+local volume2 = 0
+local volume3 = 0
+local volume4 = 0
+function update_wind(rain_volume, inside, bLevelUnderground)
+
+	if (not opt.effects_wind_enabled) or bLevelUnderground then return end
+
+	local volume = math.floor(rain_volume*100)
+	--printf(tostring(volume))
+	local wind_velocity = weather.get_value_numric("wind_velocity") or 0
+	local wind_k = wind_velocity/1000
+
+	if (volume < 35) then
+		volume1 = 60 + volume
+	end
+
+	if (volume > 25) and (volume < 60) then
+		volume1 = 70 - volume
+		volume2 = 35 + volume
+	end
+
+	if (volume > 50) then
+		volume1 = 0
+		volume2 = 70 - volume
+		volume3 = volume
+	end
+
+	volume1 = volume1 * wind_k
+	volume2 = volume2 * wind_k
+	volume3 = volume3 * wind_k
+	volume4 = indoor and 30 or 0
+
+	volume1 = clamp(volume1,0,100)
+	volume2 = clamp(volume2,0,100)
+	volume3 = clamp(volume3,0,100)
+
+	xr_sound.set_volume_sound_looped(AC_ID, sound1, volume1 * 0.01)
+	xr_sound.set_volume_sound_looped(AC_ID, sound2, volume2 * 0.01)
+	xr_sound.set_volume_sound_looped(AC_ID, sound3, volume3 * 0.01)
+	xr_sound.set_volume_sound_looped(AC_ID, sound4, volume4 * 0.01)
+end
+
 local volume_thunder = 1
 function on_before_play_thunderbolt(file, distance, result)
 	result.volume_mult = volume_thunder
@@ -166,22 +222,28 @@ local function actor_on_first_update()
 	xr_sound.play_sound_looped(AC_ID, low)
 	xr_sound.play_sound_looped(AC_ID, med)
 	xr_sound.play_sound_looped(AC_ID, big)
-
 	-- xr_sound.play_sound_looped(AC_ID, hlm_low)
 	xr_sound.play_sound_looped(AC_ID, hlm_med)
 	xr_sound.play_sound_looped(AC_ID, hlm_big)
-
 	xr_sound.play_sound_looped(AC_ID, int)
 
 	xr_sound.set_volume_sound_looped(AC_ID, low, 0)
 	xr_sound.set_volume_sound_looped(AC_ID, med, 0)
 	xr_sound.set_volume_sound_looped(AC_ID, big, 0)
-
 	-- xr_sound.set_volume_sound_looped(AC_ID, hlm_low, 0)
 	xr_sound.set_volume_sound_looped(AC_ID, hlm_med, 0)
 	xr_sound.set_volume_sound_looped(AC_ID, hlm_big, 0)
-
 	xr_sound.set_volume_sound_looped(AC_ID, int, 0)
+
+	xr_sound.play_sound_looped(AC_ID, sound1)
+	xr_sound.play_sound_looped(AC_ID, sound2)
+	xr_sound.play_sound_looped(AC_ID, sound3)
+	xr_sound.play_sound_looped(AC_ID, sound4)
+
+	xr_sound.set_volume_sound_looped(AC_ID, sound1, volume1 * 0.01)
+	xr_sound.set_volume_sound_looped(AC_ID, sound2, volume2 * 0.01)
+	xr_sound.set_volume_sound_looped(AC_ID, sound3, volume3 * 0.01)
+	xr_sound.set_volume_sound_looped(AC_ID, sound4, volume4 * 0.01)
 end
 
 function on_game_start()

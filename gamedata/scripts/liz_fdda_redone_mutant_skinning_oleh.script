@@ -1,10 +1,13 @@
+if not liz_fdda_redone_mutant_skinning then return end
+printf("loading monkeypatch: liz_fdda_redone_mutant_skinning_oleh")
+
 local mcm_auto_loot_all = liz_fdda_redone_mcm and liz_fdda_redone_mcm.get_config("skinning/auto_loot_all")
 
--- removes item pickup sounds if FDDAR auto pickup is on
+-- removes item pickup sounds if FDDAR skinning auto pickup is on
 start = ui_mutant_loot.start
 ui_mutant_loot.start = function(...)
     if mcm_auto_loot_all then
-        itms_manager.timeout_snd_on_take(250)
+        itms_manager.timeout_snd_on_take()
     end
     start(...)
 end
