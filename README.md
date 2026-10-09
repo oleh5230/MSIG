@@ -16,13 +16,17 @@ Recommended addons and load order: https://github.com/oleh5230/MSIG/blob/main/MO
 **Disabling default GAMMA sound addons is not required**
 
 ## Features
+- Rain sounds rework
+- Quieter emission sounds
 - User interface sounds
-- Player hit sounds
-- Mutant step sounds
-- Physics collision sounds
-- Door sounds
+- Item pickup/use sounds
+- Player hit/breath sounds
+- Physics sounds
 - Furniture sounds
 - Vehicle sounds
+- Electra/Pulse sounds
+- Environment device sounds
+- Various sound MCM settings
 - Various fixes
 
 ## Credits
