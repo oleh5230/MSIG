@@ -68,6 +68,15 @@
 	<string id="ui_mcm_oleh_sounds_environment_enabled_rain_strong_desc">
 		<text>If disabled, medium rain sound will be played during heavy rain.</text>
 	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_wind_master">
+		<text>Master Wind Volume</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_wind_outdoor">
+		<text>Outdoor Wind Volume</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_volume_wind_indoor">
+		<text>Indoor Wind Volume</text>
+	</string>
 	<string id="ui_mcm_oleh_sounds_environment_volume_thunder">
 		<text>Thunder Volume</text>
 	</string>
