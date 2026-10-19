@@ -155,10 +155,10 @@ function sound_ambient.update_wind(rain_volume, inside, bLevelUnderground)
 		local indoor = is_indoor()
 
 		if indoor then
-			if wind_velocity > 600 then
+			if wind_velocity > 699 then
 				wnd_vol_int_med = clamp(wnd_vol_int_big - step,0,1)
 				wnd_vol_int_big = clamp(wnd_vol_int_big + step,0,vol * volume_indoor_wind)
-			elseif wind_velocity > 300 then
+			elseif wind_velocity > 500 then
 				wnd_vol_int_med = clamp(wnd_vol_int_med + step,0,vol * volume_indoor_wind)
 				wnd_vol_int_big = clamp(wnd_vol_int_big - step,0,1)
 			else
@@ -171,11 +171,11 @@ function sound_ambient.update_wind(rain_volume, inside, bLevelUnderground)
 			wnd_vol_big = clamp(wnd_vol_big - step,0,1)
 
 		else
-			if wind_velocity > 600 then
+			if wind_velocity > 699 then
 				wnd_vol_low = clamp(wnd_vol_low - step,0,1)
 				wnd_vol_med = clamp(wnd_vol_med - step,0,1)
 				wnd_vol_big = clamp(wnd_vol_big + step,0,vol * volume_outdoor_wind)
-			elseif wind_velocity > 300 then
+			elseif wind_velocity > 500 then
 				wnd_vol_low = clamp(wnd_vol_low - step,0,1)
 				wnd_vol_med = clamp(wnd_vol_med + step,0,vol * volume_outdoor_wind)
 				wnd_vol_big = clamp(wnd_vol_big - step,0,1)
