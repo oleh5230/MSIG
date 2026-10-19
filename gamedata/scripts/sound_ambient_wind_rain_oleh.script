@@ -149,16 +149,16 @@ local volume_indoor_wind = 1
 local volume_master_wind = 1
 
 function sound_ambient.update_wind(rain_volume, inside, bLevelUnderground)
-	if opt.effects_wind_enabled and not bLevelUnderground then
+	if not bLevelUnderground then
 		local wind_velocity = weather.get_value_numric("wind_velocity") or 0
 		local vol = clamp(wind_velocity/1000,0,1)
 		local indoor = is_indoor()
 
 		if indoor then
-			if wind_velocity > 300 then
+			if wind_velocity > 600 then
 				wnd_vol_int_med = clamp(wnd_vol_int_big - step,0,1)
 				wnd_vol_int_big = clamp(wnd_vol_int_big + step,0,vol * volume_indoor_wind)
-			elseif wind_velocity > 99 then
+			elseif wind_velocity > 300 then
 				wnd_vol_int_med = clamp(wnd_vol_int_med + step,0,vol * volume_indoor_wind)
 				wnd_vol_int_big = clamp(wnd_vol_int_big - step,0,1)
 			else
@@ -171,11 +171,11 @@ function sound_ambient.update_wind(rain_volume, inside, bLevelUnderground)
 			wnd_vol_big = clamp(wnd_vol_big - step,0,1)
 
 		else
-			if wind_velocity > 300 then
+			if wind_velocity > 600 then
 				wnd_vol_low = clamp(wnd_vol_low - step,0,1)
 				wnd_vol_med = clamp(wnd_vol_med - step,0,1)
 				wnd_vol_big = clamp(wnd_vol_big + step,0,vol * volume_outdoor_wind)
-			elseif wind_velocity > 99 then
+			elseif wind_velocity > 300 then
 				wnd_vol_low = clamp(wnd_vol_low - step,0,1)
 				wnd_vol_med = clamp(wnd_vol_med + step,0,vol * volume_outdoor_wind)
 				wnd_vol_big = clamp(wnd_vol_big - step,0,1)
@@ -204,7 +204,7 @@ function sound_ambient.update_wind(rain_volume, inside, bLevelUnderground)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_med, wnd_vol_int_med)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_big, wnd_vol_int_big)
 
-	printf("Dynamic wind sounds - low: %s, med: %s, big: %s, int_med: %s, int_big: %s, wind_velocity: %s", wnd_vol_low, wnd_vol_med, wnd_vol_big, wnd_vol_int_med, wnd_vol_int_big, wind_velocity)
+	--printf("Dynamic wind sounds - low: %s, med: %s, big: %s, int_med: %s, int_big: %s, wind_velocity: %s", wnd_vol_low, wnd_vol_med, wnd_vol_big, wnd_vol_int_med, wnd_vol_int_big, wind_velocity)
 end
 
 local volume_thunder = 1
@@ -234,13 +234,18 @@ local function update_settings()
 
 	if ui_mcm and oleh_sounds_mcm and oleh_sounds_mcm.on_mcm_load then
 		volume_master_rain 		= ui_mcm.get("oleh_sounds/environment/volume_rain_master") or 1
-		volume_outdoor_rain 	= (ui_mcm.get("oleh_sounds/environment/volume_rain_outdoor") * volume_master_rain) or 1
-		volume_indoor_rain 		= (ui_mcm.get("oleh_sounds/environment/volume_rain_indoor") * volume_master_rain) or 1
-		volume_helmet_rain 		= (ui_mcm.get("oleh_sounds/environment/volume_rain_helmet") * volume_master_rain) or 1
+		volume_outdoor_rain 	= (ui_mcm.get("oleh_sounds/environment/volume_rain_outdoor")) or 1
+		volume_indoor_rain 		= (ui_mcm.get("oleh_sounds/environment/volume_rain_indoor")) or 1
+		volume_helmet_rain 		= (ui_mcm.get("oleh_sounds/environment/volume_rain_helmet")) or 1
+		volume_outdoor_rain		= volume_outdoor_rain * volume_master_rain
+		volume_indoor_rain		= volume_indoor_rain * volume_master_rain
+		volume_helmet_rain		= volume_helmet_rain * volume_master_rain
 
 		volume_master_wind 		= ui_mcm.get("oleh_sounds/environment/volume_wind_master") or 1
-		volume_outdoor_wind 	= (ui_mcm.get("oleh_sounds/environment/volume_wind_outdoor") or 1) * volume_master_wind
-		volume_indoor_wind 		= (ui_mcm.get("oleh_sounds/environment/volume_wind_indoor") or 1) * volume_master_wind
+		volume_outdoor_wind 	= (ui_mcm.get("oleh_sounds/environment/volume_wind_outdoor")) or 1
+		volume_indoor_wind 		= (ui_mcm.get("oleh_sounds/environment/volume_wind_indoor")) or 1
+		volume_outdoor_wind		= volume_outdoor_wind * volume_master_wind
+		volume_indoor_wind		= volume_indoor_wind * volume_master_wind
 
 		volume_thunder			= ui_mcm.get("oleh_sounds/environment/volume_thunder") or 1
 		volume_emission 		= ui_mcm.get("oleh_sounds/environment/volume_emission") or 1
