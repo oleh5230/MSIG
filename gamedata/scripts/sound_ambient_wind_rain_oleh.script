@@ -335,7 +335,7 @@ function sound_ambient.actor_on_update()
 			wind_velocity, wnd_vol_low, wnd_vol_med, wnd_vol_big, wnd_vol_int_low, wnd_vol_int_med, wnd_vol_int_big)
 		printf("[sound_ambient] Rain | factor: %s, volume: %s, outdoor: %s/%s/%s, helmet: %s/%s/%s, indoor: %s",
 			rain_factor, rain_volume, vol_low, vol_med, vol_big, nil, vol_hlm_med, vol_hlm_big, vol_int)
-		next_debug_log = tg + 30000
+		next_debug_log = tg + 20000
 	end
 end
 

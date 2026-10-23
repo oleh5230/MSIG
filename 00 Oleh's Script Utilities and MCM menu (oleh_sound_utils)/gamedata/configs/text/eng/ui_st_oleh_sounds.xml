@@ -54,14 +54,11 @@
 		<text>Debug logging</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_general_debug_logging_desc">
-		<text>Prints debug information into console and log every 30 seconds</text>
+		<text>Prints debug information into console and log</text>
 	</string>
 
 	<string id="ui_mcm_oleh_sounds_environment_volume_rain_master">
 		<text>Master Rain Volume</text>
-	</string>
-	<string id="ui_mcm_oleh_sounds_environment_debug_logging">
-		<text>Debug Logging (Wind/Rain Parameters Every 30 Seconds)</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_environment_volume_rain_outdoor">
 		<text>Outdoor Rain Volume</text>
