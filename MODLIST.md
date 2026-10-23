@@ -49,6 +49,7 @@ Sound addons I use personally (excluding default GAMMA addons).
 ## Recommended MCM settings:
 - Spatial Audio Rework\NPC-specific ray detection: off
 - S2 Ambience Sound:
- - Rain\Rain Interior: off
- - Special\Ambient Drones (USO): off
- - Special\Blowout: off
+  - General\Indoor Sounds: off
+  - Rain\Rain Interior: off
+  - Special\Ambient Drones (USO): off
+  - Special\Blowout: off
