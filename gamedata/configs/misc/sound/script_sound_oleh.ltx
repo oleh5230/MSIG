@@ -40,6 +40,14 @@ path = ambient\wind_medium
 type = looped
 path = ambient\wind_strong
 
+[wind_ear]
+type = looped
+path = ambient\wind_ear
+
+[wind_interior_weak]
+type = looped
+path = ambient\wind_indoors_medium
+
 [wind_interior_medium]
 type = looped
 path = ambient\wind_indoors_medium
@@ -47,3 +55,47 @@ path = ambient\wind_indoors_medium
 [wind_interior_strong]
 type = looped
 path = ambient\wind_indoors_strong
+
+
+
+[bunker_door_open_start]
+type = 3d
+path = device\door_start
+shuffle = rnd
+idle = 1,1,100
+
+[bunker_door_close_start]
+type = 3d
+path = device\door_closing
+shuffle = rnd
+idle = 1,1,100
+
+[bunker_door_close_stop]
+type = 3d
+path = device\door_stop
+shuffle = rnd
+idle = 1,1,100
+
+[metal_large_open]
+type = 3d
+path = device\metal_large_open
+shuffle = rnd
+idle = 1,1,100
+
+[metal_large_close_start]
+type = 3d
+path = device\metal_large_close_start
+shuffle = rnd
+idle = 1,1,100
+
+[metal_large_close_start_short]
+type = 3d
+path = device\metal_large_close_start_short
+shuffle = rnd
+idle = 1,1,100
+
+[metal_large_close_stop]
+type = 3d
+path = device\metal_large_close_stop
+shuffle = rnd
+idle = 1,1,100

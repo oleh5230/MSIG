@@ -36,6 +36,8 @@ local opt = {
 	effects_wind_enabled = true,
 	effects_rain_enabled = true,
 }
+local debug_logging = false
+local next_debug_log = 0
 
 function is_indoor()
 	if level.rain_hemi() < 0.1 then
@@ -56,11 +58,10 @@ if sar_snd_replacer then
 end
 
 update_rain_helm_sound = sound_ambient.update_rain_helm_sound
-function sound_ambient.update_rain_helm_sound(rain_factor, rain_volume, inside, bLevelUnderground)
+function sound_ambient.update_rain_helm_sound(bLevelUnderground, indoor, rain_factor, rain_volume)
 
 	if not bLevelUnderground and rain_factor > 0 then
 		local vol = sar_snd_replacer and rain_factor or rain_volume
-		local indoor = is_indoor()
 
 		if indoor then
 			vol_low = clamp(vol_low - step,0,1)
@@ -135,12 +136,16 @@ end
 local wnd_low = "wind_weak"
 local wnd_med = "wind_medium"
 local wnd_big = "wind_strong"
+local wnd_ear = "wind_ear"
+local wnd_int_low = "wind_interior_weak"
 local wnd_int_med = "wind_interior_medium"
 local wnd_int_big = "wind_interior_strong"
 
 local wnd_vol_low = 0
 local wnd_vol_med = 0
 local wnd_vol_big = 0
+local wnd_vol_ear = 0
+local wnd_vol_int_low = 0
 local wnd_vol_int_med = 0
 local wnd_vol_int_big = 0
 
@@ -148,20 +153,24 @@ local volume_outdoor_wind = 1
 local volume_indoor_wind = 1
 local volume_master_wind = 1
 
-function sound_ambient.update_wind(rain_volume, inside, bLevelUnderground)
+local wind_ear_enabled = true
+local wind_ear_volume = 1
+
+function sound_ambient.update_wind(bLevelUnderground, indoor, wind_velocity)
 	if not bLevelUnderground then
-		local wind_velocity = weather.get_value_numric("wind_velocity") or 0
 		local vol = clamp(wind_velocity/1000,0,1)
-		local indoor = is_indoor()
 
 		if indoor then
 			if wind_velocity > 699 then
-				wnd_vol_int_med = clamp(wnd_vol_int_big - step,0,1)
+				wnd_vol_int_low = clamp(wnd_vol_int_low - step,0,1)
+				wnd_vol_int_med = clamp(wnd_vol_int_med - step,0,1)
 				wnd_vol_int_big = clamp(wnd_vol_int_big + step,0,vol * volume_indoor_wind)
 			elseif wind_velocity > 500 then
+				wnd_vol_int_low = clamp(wnd_vol_int_low - step,0,1)
 				wnd_vol_int_med = clamp(wnd_vol_int_med + step,0,vol * volume_indoor_wind)
 				wnd_vol_int_big = clamp(wnd_vol_int_big - step,0,1)
 			else
+				wnd_vol_int_low = clamp(wnd_vol_int_low + step,0,vol * volume_indoor_wind)
 				wnd_vol_int_med = clamp(wnd_vol_int_med - step,0,1)
 				wnd_vol_int_big = clamp(wnd_vol_int_big - step,0,1)
 			end
@@ -175,16 +184,27 @@ function sound_ambient.update_wind(rain_volume, inside, bLevelUnderground)
 				wnd_vol_low = clamp(wnd_vol_low - step,0,1)
 				wnd_vol_med = clamp(wnd_vol_med - step,0,1)
 				wnd_vol_big = clamp(wnd_vol_big + step,0,vol * volume_outdoor_wind)
+
+				wnd_vol_ear = wind_ear_enabled and not actor_effects.is_mask_on() and clamp(wnd_vol_ear + step,0,vol * wind_ear_volume)
+				or clamp(wnd_vol_ear - step,0,1)
+
 			elseif wind_velocity > 500 then
 				wnd_vol_low = clamp(wnd_vol_low - step,0,1)
 				wnd_vol_med = clamp(wnd_vol_med + step,0,vol * volume_outdoor_wind)
 				wnd_vol_big = clamp(wnd_vol_big - step,0,1)
+
+				wnd_vol_ear = wind_ear_enabled and not actor_effects.is_mask_on() and clamp(wnd_vol_ear + step,0,vol * wind_ear_volume)
+				or clamp(wnd_vol_ear - step,0,1)
+
 			else
 				wnd_vol_low = clamp(wnd_vol_low + step,0,vol * volume_outdoor_wind)
 				wnd_vol_med = clamp(wnd_vol_med - step,0,1)
 				wnd_vol_big = clamp(wnd_vol_big - step,0,1)
+
+				wnd_vol_ear = clamp(wnd_vol_ear - step,0,1)
 			end
 
+			wnd_vol_int_low = clamp(wnd_vol_int_low - step,0,1)
 			wnd_vol_int_med = clamp(wnd_vol_int_med - step,0,1)
 			wnd_vol_int_big = clamp(wnd_vol_int_big - step,0,1)
 		end
@@ -194,16 +214,22 @@ function sound_ambient.update_wind(rain_volume, inside, bLevelUnderground)
 		wnd_vol_med = clamp(wnd_vol_med - step,0,1)
 		wnd_vol_big = clamp(wnd_vol_big - step,0,1)
 
+		wnd_vol_int_low = clamp(wnd_vol_int_low - step,0,1)
 		wnd_vol_int_med = clamp(wnd_vol_int_med - step,0,1)
 		wnd_vol_int_big = clamp(wnd_vol_int_big - step,0,1)
+
+		wnd_vol_ear = clamp(wnd_vol_ear - step,0,1)
 	end
 
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_low, wnd_vol_low)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_med, wnd_vol_med)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_big, wnd_vol_big)
+	xr_sound.set_volume_sound_looped(AC_ID, wnd_ear, wnd_vol_ear)
+	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_low, wnd_vol_int_low)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_med, wnd_vol_int_med)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_big, wnd_vol_int_big)
 
+--printf("%s %s %s", wind_ear_enabled, not actor_effects.is_mask_on(), wnd_vol_ear)
 	--printf("Dynamic wind sounds - low: %s, med: %s, big: %s, int_med: %s, int_big: %s, wind_velocity: %s", wnd_vol_low, wnd_vol_med, wnd_vol_big, wnd_vol_int_med, wnd_vol_int_big, wind_velocity)
 end
 
@@ -233,6 +259,8 @@ local function update_settings()
 	opt.effects_wind_enabled = ui_options.get("sound/environment/wind_sound")
 
 	if ui_mcm and oleh_sounds_mcm and oleh_sounds_mcm.on_mcm_load then
+		debug_logging 			= ui_mcm.get("oleh_sounds/general/debug_logging")
+
 		volume_master_rain 		= ui_mcm.get("oleh_sounds/environment/volume_rain_master") or 1
 		volume_outdoor_rain 	= (ui_mcm.get("oleh_sounds/environment/volume_rain_outdoor")) or 1
 		volume_indoor_rain 		= (ui_mcm.get("oleh_sounds/environment/volume_rain_indoor")) or 1
@@ -246,6 +274,9 @@ local function update_settings()
 		volume_indoor_wind 		= (ui_mcm.get("oleh_sounds/environment/volume_wind_indoor")) or 1
 		volume_outdoor_wind		= volume_outdoor_wind * volume_master_wind
 		volume_indoor_wind		= volume_indoor_wind * volume_master_wind
+		wind_ear_enabled 		= ui_mcm.get("oleh_sounds/environment/enabled_aerodynamic_wind_noise")
+		wind_ear_volume 		= ui_mcm.get("oleh_sounds/environment/wind_ear_volume") or 1
+		wind_ear_volume			= wind_ear_volume * volume_master_wind
 
 		volume_thunder			= ui_mcm.get("oleh_sounds/environment/volume_thunder") or 1
 		volume_emission 		= ui_mcm.get("oleh_sounds/environment/volume_emission") or 1
@@ -272,14 +303,40 @@ local function actor_on_first_update()
 	xr_sound.play_sound_looped(AC_ID, wnd_low)
 	xr_sound.play_sound_looped(AC_ID, wnd_med)
 	xr_sound.play_sound_looped(AC_ID, wnd_big)
+	xr_sound.play_sound_looped(AC_ID, wnd_ear)
+	xr_sound.play_sound_looped(AC_ID, wnd_int_low)
 	xr_sound.play_sound_looped(AC_ID, wnd_int_med)
 	xr_sound.play_sound_looped(AC_ID, wnd_int_big)
 
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_low, 0)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_med, 0)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_big, 0)
+	xr_sound.set_volume_sound_looped(AC_ID, wnd_ear, 0)
+	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_low, 0)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_med, 0)
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_big, 0)
+end
+
+function sound_ambient.actor_on_update()
+	local rain_factor = level.rain_factor()
+	local rain_volume = level.get_rain_volume()
+	local wind_velocity = weather.get_value_numric("wind_velocity") or 0
+	local bLevelUnderground = GetEvent("underground")
+	local indoor = is_indoor()
+
+	sound_ambient.update_wind(bLevelUnderground, indoor, wind_velocity)
+	sound_ambient.update_rain_helm_sound(bLevelUnderground, indoor, rain_factor, rain_volume)
+
+	local tg = time_global()
+	if debug_logging and tg >= next_debug_log then
+		printf("[sound_ambient] bLevelUnderground: %s, indoor: %s",
+			bLevelUnderground, indoor)
+		printf("[sound_ambient] Wind | velocity: %s, outdoor: %s/%s/%s, indoor: %s/%s/%s",
+			wind_velocity, wnd_vol_low, wnd_vol_med, wnd_vol_big, wnd_vol_int_low, wnd_vol_int_med, wnd_vol_int_big)
+		printf("[sound_ambient] Rain | factor: %s, volume: %s, outdoor: %s/%s/%s, helmet: %s/%s/%s, indoor: %s",
+			rain_factor, rain_volume, vol_low, vol_med, vol_big, nil, vol_hlm_med, vol_hlm_big, vol_int)
+		next_debug_log = tg + 30000
+	end
 end
 
 function on_game_start()
