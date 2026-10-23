@@ -50,8 +50,18 @@
 		<text>Fixes jump and casings sound effects on ice.</text>
 	</string>
 
+	<string id="ui_mcm_oleh_sounds_general_debug_logging">
+		<text>Debug logging</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_general_debug_logging_desc">
+		<text>Prints debug information into console and log every 30 seconds</text>
+	</string>
+
 	<string id="ui_mcm_oleh_sounds_environment_volume_rain_master">
 		<text>Master Rain Volume</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_debug_logging">
+		<text>Debug Logging (Wind/Rain Parameters Every 30 Seconds)</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_environment_volume_rain_outdoor">
 		<text>Outdoor Rain Volume</text>
@@ -68,7 +78,6 @@
 	<string id="ui_mcm_oleh_sounds_environment_enabled_rain_strong_desc">
 		<text>If disabled, medium rain sound will be played during heavy rain.</text>
 	</string>
-
 	<string id="ui_mcm_oleh_sounds_environment_volume_wind_master">
 		<text>Master Wind Volume</text>
 	</string>
@@ -78,7 +87,15 @@
 	<string id="ui_mcm_oleh_sounds_environment_volume_wind_indoor">
 		<text>Indoor Wind Volume</text>
 	</string>
-
+	<string id="ui_mcm_oleh_sounds_environment_enabled_aerodynamic_wind_noise">
+		<text>Wind Turbulence Noise</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_enabled_aerodynamic_wind_noise_desc">
+		<text>Extra low pitch during strong wind.</text>
+	</string>
+	<string id="ui_mcm_oleh_sounds_environment_wind_ear_volume">
+		<text>Wind Turbulence Noise Volume</text>
+	</string>
 	<string id="ui_mcm_oleh_sounds_environment_volume_thunder">
 		<text>Thunder Volume</text>
 	</string>
