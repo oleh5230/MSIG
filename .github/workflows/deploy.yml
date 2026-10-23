@@ -37,9 +37,9 @@ jobs:
           mkdir -p "001 Miscellaneous Sound Improvements [Optional]"
           cp -r gamedata "001 Miscellaneous Sound Improvements [Optional]/"
           zip -r "$RELEASE_NAME.zip" \
+            "002 Emission Sounds [Optional]" \
             "001 Miscellaneous Sound Improvements [Optional]" \
             "01 PDA turn on and off beep sounds [Optional]" \
-            "02 Emission Sounds [Optional]" \
             "00 Oleh's Script Utilities and MCM menu (oleh_sound_utils)"
         env: 
           RELEASE_NAME: MSIG-${{ steps.date.outputs.today }}
