@@ -76,7 +76,7 @@ local function on_option_change()
         opt = actor_effects.opt
     end
 
-	if ui_mcm and oleh_sounds_mcm then
+	if ui_mcm and oleh_sounds_mcm and oleh_sounds_mcm.on_mcm_load then
 		enabled       = ui_mcm.get("oleh_sounds/movement/enabled_sprint_breathing")
 		volume        = ui_mcm.get("oleh_sounds/movement/volume_sprint_breathing")
 		enabled_mask  = ui_mcm.get("oleh_sounds/movement/enabled_mask_breathing")
