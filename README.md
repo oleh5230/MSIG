@@ -32,3 +32,4 @@ Recommended addons and load order: https://github.com/oleh5230/MSIG/blob/main/MO
 ## Credits
 - Shrike: anomaly, mutant, geiger and multiple inventory sounds, FDDAR sounds
 - Ani HVX: thunder, multiple inventory sounds
+- relax_68: wind turbulence sound
