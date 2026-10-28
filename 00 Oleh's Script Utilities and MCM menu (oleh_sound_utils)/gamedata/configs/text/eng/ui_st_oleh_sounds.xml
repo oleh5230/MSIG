@@ -88,7 +88,7 @@
 		<text>Wind Turbulence Noise</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_environment_enabled_aerodynamic_wind_noise_desc">
-		<text>Extra low pitch during strong wind.</text>
+		<text>Extra low pitch sound during strong wind.</text>
 	</string>
 	<string id="ui_mcm_oleh_sounds_environment_wind_ear_volume">
 		<text>Wind Turbulence Noise Volume</text>

@@ -36,8 +36,6 @@ local opt = {
 	effects_wind_enabled = true,
 	effects_rain_enabled = true,
 }
-local debug_logging = false
-local next_debug_log = 0
 
 function is_indoor()
 	if level.rain_hemi() < 0.1 then
@@ -320,7 +318,14 @@ local function actor_on_first_update()
 	xr_sound.set_volume_sound_looped(AC_ID, wnd_int_big, 0)
 end
 
+local next_update = 0
+local debug_logging = false
+local next_debug_log = 0
 function sound_ambient.actor_on_update()
+	local tg = time_global()
+	if tg < next_update + 200 then return end
+	next_update = tg
+
 	local rain_factor = level.rain_factor()
 	local rain_volume = level.get_rain_volume()
 	local wind_velocity = weather.get_value_numric("wind_velocity") or 0
@@ -330,8 +335,7 @@ function sound_ambient.actor_on_update()
 	sound_ambient.update_wind(bLevelUnderground, indoor, wind_velocity)
 	sound_ambient.update_rain_helm_sound(bLevelUnderground, indoor, rain_factor, rain_volume)
 
-	local tg = time_global()
-	if debug_logging and tg >= next_debug_log then
+	if debug_logging and tg > next_debug_log then
 		printf("[sound_ambient] bLevelUnderground: %s, indoor: %s",
 			bLevelUnderground, indoor)
 		printf("[sound_ambient] Wind | velocity: %s, outdoor: %s/%s/%s, indoor: %s/%s/%s, ear: %s",
