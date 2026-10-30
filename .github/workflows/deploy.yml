@@ -37,8 +37,8 @@ jobs:
           mkdir -p "001 Miscellaneous Sound Improvements [Optional]"
           cp -r gamedata "001 Miscellaneous Sound Improvements [Optional]/"
           zip -r "$RELEASE_NAME.zip" \
-            "004 'Audio Expansion' Patch" \
-            "003 'S.T.A.L.K.E.R 2 Ambience' Patch" \
+            "03 'Audio Expansion' Patch" \
+            "02 'S.T.A.L.K.E.R 2 Ambience' Patch" \
             "002 Emission and Thunder Sounds [Optional]" \
             "001 Miscellaneous Sound Improvements [Optional]" \
             "01 PDA turn on and off beep sounds [Optional]" \
