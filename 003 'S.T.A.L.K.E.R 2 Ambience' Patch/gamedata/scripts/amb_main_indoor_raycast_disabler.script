@@ -1,0 +1,4 @@
+should_fire_ray_slice = amb_main.should_fire_ray_slice
+function amb_main.should_fire_ray_slice()
+    return false
+end
