@@ -6,7 +6,7 @@ Sound addons I use personally (excluding default GAMMA addons).
 
 <img width="537" height="303" alt="image" src="https://github.com/user-attachments/assets/4941e5e5-3b0c-4cac-ad07-1a16228011d2" />
 
-- [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework) - indoor reverberations + better indoors detection for MSIG rain
+- [Spatial Audio Rework](https://www.moddb.com/mods/stalker-anomaly/addons/spatial-audio-rework) - indoor reverberations + better indoors detection for MSIG rain; **performance heavy**
 - [Oleh's Miscellaneous Sound Improvements (MSIG)](https://github.com/oleh5230/MSIG) - mandatory for Oleh's addons
 - [Oleh's Weapon Sounds (WSTFG)](https://github.com/oleh5230/WSTFG) - weapon foley and gunfire
 - [Oleh's MovementSFX](https://github.com/oleh5230/MovementSFX) - player movement
@@ -50,7 +50,7 @@ Sound addons I use personally (excluding default GAMMA addons).
 ## Recommended MCM settings:
 - Spatial Audio Rework\NPC-specific ray detection: off
 - S2 Ambience Sound:
-  - General\Indoor Sounds: off
+  - Structures\Urban: off (includes infamous shitting sounds)
   - Rain\Rain Interior: off
   - Special\Ambient Drones (USO): off
   - Special\Blowout: off
