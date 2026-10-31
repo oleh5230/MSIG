@@ -133,7 +133,6 @@ function sound_ambient.update_wind(bLevelUnderground, indoor, wind_velocity)
 			end
 
 			wnd_vol_low = clamp(wnd_vol_low - step,0,1)
-			wnd_vol_med = clamp(wnd_vol_med - step,0,1)
 			wnd_vol_big = clamp(wnd_vol_big - step,0,1)
 
 		else

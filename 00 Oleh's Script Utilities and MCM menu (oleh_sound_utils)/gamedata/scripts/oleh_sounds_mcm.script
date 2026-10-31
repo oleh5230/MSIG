@@ -133,7 +133,7 @@ function on_mcm_load()
                     {id = "volume_wind_master", type = "track", val = 2, min = 0, max = 2, step = 0.05, def = 1},
                     {id = "volume_wind_outdoor", type = "track", val = 2, min = 0, max = 2, step = 0.05, def = 1},
                     {id = "volume_wind_indoor", type = "track", val = 2, min = 0, max = 2, step = 0.05, def = 1},
-                    {id = "enabled_wind_ear", type = "check", val = 1, def = true},
+                    {id = "enabled_wind_ear", type = "check", val = 1, def = false},
 
                     {id = "divider", type = "line"},
                     {id = "volume_thunder", type = "track", val = 2, min = 0, max = 2, step = 0.05, def = 1},
