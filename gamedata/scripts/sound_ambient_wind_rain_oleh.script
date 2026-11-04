@@ -206,7 +206,6 @@ local function update_settings()
 		volume_indoor_wind		= volume_indoor_wind * volume_master_wind
 
 		enabled_wind_ear		= ui_mcm.get("oleh_sounds/environment/enabled_wind_ear")
-		wnd_med					= enabled_wind_ear and "wind_medium_mix" or "wind_medium"
 		wnd_big					= enabled_wind_ear and "wind_strong_mix" or "wind_strong"
 
 		volume_thunder			= ui_mcm.get("oleh_sounds/environment/volume_thunder") or 1
