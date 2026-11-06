@@ -21,7 +21,7 @@ end
 
 snd_on_take = {
 	-- vanilla types:
-	["coin"]    			= {"interface\\items\\inv_items_coins_1"},
+	["coin"]    			= {"interface\\items\\inv_items_coins_",1,4},
 	["bolt"]    			= {"interface\\items\\inv_items_bolt_",1,2},
 	["paper"]   			= {"interface\\items\\inv_items_paper_1"},
 	["bottle"]   			= {"interface\\items\\inv_items_bottleglass_",1,2},
