@@ -120,10 +120,11 @@ local enabled_wind_ear = true
 
 function sound_ambient.update_wind(underground, indoor, wind_velocity)
 	if not underground then
-		local vol = clamp(wind_velocity/1000,0,1)
+		wind_velocity = wind_velocity / 1000
+		local vol = clamp(wind_velocity * wind_velocity,0,1)
 
 		if indoor then
-			if wind_velocity > 499 then
+			if wind_velocity > 0.5 then
 				wnd_vol_int_low = clamp(wnd_vol_int_low - step,0,1)
 				wnd_vol_int_big = clamp(wnd_vol_int_big + step,0,vol * volume_indoor_wind)
 
@@ -136,7 +137,7 @@ function sound_ambient.update_wind(underground, indoor, wind_velocity)
 			wnd_vol_big = clamp(wnd_vol_big - step,0,1)
 
 		else
-			if wind_velocity > 499 then
+			if wind_velocity > 0.5 then
 				wnd_vol_low = clamp(wnd_vol_low - step,0,1)
 				wnd_vol_big = clamp(wnd_vol_big + step,0,vol * volume_outdoor_wind)
 
